@@ -1,0 +1,19 @@
+<h3>Login</h3>
+
+<div class="input-group">
+  <label>Email address</label>
+  {{input value=identification}}
+</div>
+
+<div class="input-group">
+  <label>Password</label>
+  {{input type='password' value=password}}
+</div>
+
+<button {{action 'login'}}>Login</button>
+
+{{#if errorMessage}}
+  There was a problem with your email address and password.
+{{/if}}
+
+{{outlet}}

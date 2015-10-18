@@ -1,3 +1,14 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#link-to 'application'}}
+  <h2 id="title">Charity Auctions</h2>
+{{/link-to}}
+
+{{link-to 'Register User' 'register-user'}}
+
+{{#if session.isAuthenticated}}
+  Welcome {{sessionUser.user.name}}!
+  <button {{action 'logout'}}>Logout</button>
+{{else}}
+  {{link-to 'Login' 'login'}}
+{{/if}}
 
 {{outlet}}
