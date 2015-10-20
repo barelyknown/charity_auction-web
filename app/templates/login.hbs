@@ -10,7 +10,7 @@
   {{input type='password' value=password}}
 </div>
 
-<button {{action 'login'}}>Login</button>
+<button {{action 'login' identification password}}>Login</button>
 
 {{#if errorMessage}}
   There was a problem with your email address and password.

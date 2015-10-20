@@ -7,6 +7,6 @@ export default Ember.Service.extend({
   store: service(),
 
   user: Ember.computed('session.data.authenticated.access_token', function() {
-    return this.get('store').findRecord('user', 'me');
+    return this.get('store').findRecord('user', 'me')
   })
 });
