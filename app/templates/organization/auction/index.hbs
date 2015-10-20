@@ -1,0 +1,9 @@
+<h5>Donations</h5>
+{{link-to 'New Donation' 'organization.auction.donations.new'}}
+<ul>
+  {{#each model.donations as |donation|}}
+    <li>{{donation.title}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}

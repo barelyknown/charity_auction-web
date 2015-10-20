@@ -1,0 +1,14 @@
+{{#if session.isAuthenticated}}
+  <ul>
+    <li>{{link-to 'New organization' 'organizations.new'}}</li>
+  </ul>
+
+  <h4>My Organizations</h4>
+  <ul>
+    {{#each sessionUser.user.memberships as |membership|}}
+      <li>{{link-to membership.organization.name 'organization' membership.organization}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+{{outlet}}

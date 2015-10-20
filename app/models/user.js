@@ -5,5 +5,6 @@ export default DS.Model.extend({
   password: DS.attr(),
   name: DS.attr(),
   mobilePhoneNumber: DS.attr(),
-  physicalAddress: DS.attr()
+  physicalAddress: DS.attr(),
+  memberships: DS.hasMany()
 });

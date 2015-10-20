@@ -1,0 +1,21 @@
+<h5>New Donation</h5>
+
+<div class="input-group">
+  <label>Title</label>
+  {{focus-input value=model.title}}
+</div>
+
+<div class="input-group">
+  <label>Donation Category</label>
+  <select onchange={{action 'setDonationCategory' value="target.value"}}>
+    <option></option>
+    {{#each donationCategories as |donationCategory|}}
+      <option value={{donationCategory.id}}>{{donationCategory.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+
+<button {{action 'saveDonation'}}>Save</button>
+
+{{outlet}}

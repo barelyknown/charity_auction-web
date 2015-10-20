@@ -1,0 +1,10 @@
+<h3>New Auction</h3>
+
+<div class="input-group">
+  <label>Name</label>
+  {{focus-input value=model.name}}
+</div>
+
+<button {{action 'saveAuction'}}>Save</button>
+
+{{outlet}}
