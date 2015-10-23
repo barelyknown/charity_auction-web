@@ -2,7 +2,9 @@
   {{#if isEditable}}
     {{focus-input value=organization.name enter='save'}}
   {{else}}
-    <span class="organization-name" {{action 'edit'}}>{{organization.name}}</span>
+    {{#link-to 'organization' organization}}
+      <span class="organization-name">{{organization.name}}</span>
+    {{/link-to}}
   {{/if}}
 </h3>
 <a href="#" {{action 'edit'}}>{{#if isEditable}}Cancel{{else}}Edit{{/if}}</a>
