@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    createAuction(auction) {
+    updateAuction(auction) {
       let self = this;
       auction.save().then(function() {
         self.transitionToRoute('organization');

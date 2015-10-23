@@ -1,0 +1,29 @@
+<h3>
+  {{#if auction.id}}
+    Edit
+  {{else}}
+    New
+  {{/if}}
+  Auction
+</h3>
+
+<div class="input-group">
+  <label>Name</label>
+  {{focus-input value=auction.name}}
+</div>
+
+<div class="input-group">
+  <label>Physical Address</label>
+  {{textarea value=auction.physicalAddress rows=3 cols=40}}
+</div>
+
+<button {{action 'save'}}>
+  {{#if auction.id}}
+    Update
+  {{else}}
+    Create
+  {{/if}}
+  Auction
+</button>
+
+{{yield}}

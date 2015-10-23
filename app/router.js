@@ -20,6 +20,7 @@ Router.map(function() {
       this.route('donations', {}, function() {
         this.route('new', {});
       });
+      this.route('edit', {});
     });
   });
 });
