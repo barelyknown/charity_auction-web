@@ -1,6 +1,14 @@
 <dl>
   <dt>Physical Address</dt>
   <dd>{{model.physicalAddress}}</dd>
+  <dt>Time Zone ID</dt>
+  <dd>{{model.timeZoneId}}</dd>
+  <dt>Donation Window Ends At</dt>
+  <dd>{{moment-format model.donationWindowEndsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}</dd>
+  <dt>Starts At</dt>
+  <dd>{{moment-format model.startsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}</dd>
+  <dt>Ends At</dt>
+  <dd>{{moment-format model.endsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}</dd>
 </dl>
 
 <h5>Donations</h5>

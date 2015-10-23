@@ -17,6 +17,33 @@
   {{textarea value=auction.physicalAddress rows=3 cols=40}}
 </div>
 
+<div class="input-group">
+  <label>Time Zone</label>
+  <select onchange={{action (mut auction.timeZoneId) value="target.value"}}>
+    <option value=''>Select a time zone</option>
+    {{#each timeZones as |timeZone|}}
+      <option selected={{eq timeZone.id auction.timeZoneId}} value={{timeZone.id}}>{{timeZone.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<p>Dates should be in the format "YYYY-MM-DD hh:mm".</p>
+
+<div class="input-group">
+  <label>Donation Window Ends At</label>
+  {{input value=localDonationWindowEndsAt}}
+</div>
+
+<div class="input-group">
+  <label>Starts At</label>
+  {{input value=localStartsAt}}
+</div>
+
+<div class="input-group">
+  <label>Ends At</label>
+  {{input value=localEndsAt}}
+</div>
+
 <button {{action 'save'}}>
   {{#if auction.id}}
     Update
