@@ -21,6 +21,7 @@ Router.map(function() {
         this.route('new', {});
       });
       this.route('donation', { path: 'donations/:donation_id' }, function() {
+        this.route('edit', {});
       });
       this.route('edit', {});
     });

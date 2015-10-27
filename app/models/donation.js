@@ -12,5 +12,6 @@ export default DS.Model.extend({
   adminFollowUpNeeded: DS.attr('boolean'),
   fulfillmentType: DS.attr(),
   bidType: DS.belongsTo('bid-type'),
-  redemptionWindowStartsAt: DS.attr('date')
+  redemptionWindowStartsAt: DS.attr('date'),
+  redemptionWindowEndsAt: DS.attr('date')
 });

@@ -2,6 +2,8 @@
 
   <h3>Donation</h3>
 
+  {{link-to 'Edit donation' 'organization.auction.donation.edit' model}}
+
   <dl>
     <dt>Title</dt>
     <dd>{{model.title}}</dd>
@@ -37,7 +39,7 @@
     <dd>{{moment-format model.redemptionWindowStartsAt timeZone=model.auction.timeZoneId}}</dd>
 
     <dt>Redemption Window Ends At</dt>
-    <dd>{{moment-format model.redemptionWindowEndsAt timeZone=model.auction.timeZoneId}}</dd>            
+    <dd>{{moment-format model.redemptionWindowEndsAt timeZone=model.auction.timeZoneId}}</dd>
   </dl>
 
 </div>

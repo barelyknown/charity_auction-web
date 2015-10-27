@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   queryParams: ['editOrganizationName'],
 
+  editOrganizationName: false,
+
   isEditable: Ember.computed('editOrganizationName', function() {
     if (this.get('editOrganizationName')) {
       if (this.get('editOrganizationName') === 'true') {
