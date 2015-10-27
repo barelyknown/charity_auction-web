@@ -1,0 +1,68 @@
+{{link-to 'Edit Auction' 'organizations.organization.auctions.auction.edit' model}}
+
+<dl>
+  <dt>Physical Address</dt>
+  <dd>
+    {{#if model.physicalAddress}}
+      {{model.physicalAddress}}
+    {{else}}
+      <span class='is-blank'>
+        None provided
+      </span>
+    {{/if}}
+  </dd>
+  <dt>Time Zone ID</dt>
+  <dd>
+    {{#if model.timeZoneId}}
+      {{model.timeZoneId}}
+    {{else}}
+      <span class='is-blank'>
+        None provided
+      </span>
+    {{/if}}
+  </dd>
+  <dt>Donation Window Ends At</dt>
+  <dd>
+    {{#if model.donationWindowEndsAt}}
+      {{moment-format model.donationWindowEndsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}
+    {{else}}
+      <span class='is-blank'>
+        None provided
+      </span>
+    {{/if}}
+  </dd>
+  <dt>Starts At</dt>
+  <dd>
+    {{#if model.startsAt}}
+      {{moment-format model.startsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}
+    {{else}}
+      <span class='is-blank'>
+        None provided
+      </span>
+    {{/if}}
+  </dd>
+  <dt>Ends At</dt>
+  <dd>
+    {{#if model.startsAt}}
+      {{moment-format model.endsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}
+    {{else}}
+      <span class='is-blank'>
+        None provided
+      </span>
+    {{/if}}
+  </dd>
+</dl>
+
+<h5>Donations</h5>
+{{link-to 'New Donation' 'organizations.organization.auctions.auction.donations.new'}}
+<ul>
+  {{#each model.donations as |donation|}}
+    <li>
+      {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
+        {{donation.title}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+
+{{outlet}}

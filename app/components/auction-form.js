@@ -14,6 +14,18 @@ export default Ember.Component.extend({
     }
   ],
 
+  isTimeZoneIdNotSet: Ember.computed('auction.timeZoneId', function() {
+    return Ember.isBlank(this.get('auction.timeZoneId'));
+  }),
+
+  isTimeZoneIdNotSetPlaceholder: Ember.computed('isTimeZoneIdNotSet', function() {
+    if (this.get('isTimeZoneIdNotSet')) {
+      return 'Set the time zone before setting dates.';
+    } else {
+      return '';
+    }
+  }),
+
   localDonationWindowEndsAt: Ember.computed('auction.timeZoneId', {
     get(key) {
       if (this.get('auction.donationWindowEndsAt')) {
@@ -21,8 +33,10 @@ export default Ember.Component.extend({
       }
     },
     set(key, value) {
-      const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
-      this.set('auction.donationWindowEndsAt', new Date(localMoment.tz('UTC').format()));
+      if (Ember.isPresent(this.get('auction.timeZoneId'))) {
+        const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
+        this.set('auction.donationWindowEndsAt', new Date(localMoment.tz('UTC').format()));
+      }
       return value;
     }
   }),
@@ -34,8 +48,10 @@ export default Ember.Component.extend({
       }
     },
     set(key, value) {
-      const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
-      this.set('auction.startsAt', new Date(localMoment.tz('UTC').format()));
+      if (Ember.isPresent(this.get('auction.timeZoneId'))) {
+        const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
+        this.set('auction.startsAt', new Date(localMoment.tz('UTC').format()));
+      }
       return value;
     }
   }),
@@ -47,15 +63,25 @@ export default Ember.Component.extend({
       }
     },
     set(key, value) {
-      const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
-      this.set('auction.endsAt', new Date(localMoment.tz('UTC').format()));
+      if (Ember.isPresent(this.get('auction.timeZoneId'))) {
+        const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
+        this.set('auction.endsAt', new Date(localMoment.tz('UTC').format()));
+      }
       return value;
     }
   }),
 
+  onSave: 'saveAuction',
+
+  onCancel: 'cancelEditAuction',
+
   actions: {
     save() {
-      this.get('onSave')(this.get('auction'));
+      this.sendAction('onSave', this.get('auction'));
+    },
+
+    cancel() {
+      this.sendAction('onCancel', this.get('auction'));
     }
   }
 

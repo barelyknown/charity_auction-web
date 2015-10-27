@@ -1,0 +1,15 @@
+<div>
+  <h3 class='organization-name'>
+    {{#if isEditable}}
+      {{focus-input value=organization.name enter='save'}}
+    {{else}}
+      {{#link-to 'organizations.organization' organization}}
+        <span class="organization-name">{{organization.name}}</span>
+      {{/link-to}}
+    {{/if}}
+  </h3>
+  <a href="#" {{action 'edit'}}>{{#if isEditable}}Cancel{{else}}Edit{{/if}}</a>
+  {{#if isEditable}}
+    <button {{action 'save'}}>Save</button>
+  {{/if}}
+</div>

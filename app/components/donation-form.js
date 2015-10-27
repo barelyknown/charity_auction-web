@@ -10,9 +10,16 @@ export default Ember.Component.extend({
     return this.get('store').findAll('donation-category');
   }.property(),
 
-  donors: function() {
+
+  allUsers: function() {
     return this.get('store').findAll('user');
   }.property(),
+
+  persistedUsers: Ember.computed('allUsers.@each.id', function() {
+    return this.get('allUsers').filter(function(user) {
+      return parseInt(user.get('id')) > 0;
+    });
+  }),
 
   bidTypes: function() {
     return this.get('store').findAll('bid-type');
@@ -58,10 +65,10 @@ export default Ember.Component.extend({
         })
       );
     },
-    setDonor(donorId) {
+    setDonor(userId) {
       this.get('donation').set('donor',
-        this.get('donors').find(function(donor) {
-          return donor.get('id') === donorId;
+        this.get('persistedUsers').find(function(user) {
+          return user.get('id') === userId;
         })
       );
     },

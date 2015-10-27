@@ -31,17 +31,17 @@
 
 <div class="input-group">
   <label>Donation Window Ends At</label>
-  {{input value=localDonationWindowEndsAt}}
+  {{input value=localDonationWindowEndsAt disabled=isTimeZoneIdNotSet placeholder=isTimeZoneIdNotSetPlaceholder size=50}}
 </div>
 
 <div class="input-group">
   <label>Starts At</label>
-  {{input value=localStartsAt}}
+  {{input value=localStartsAt disabled=isTimeZoneIdNotSet placeholder=isTimeZoneIdNotSetPlaceholder size=50}}
 </div>
 
 <div class="input-group">
   <label>Ends At</label>
-  {{input value=localEndsAt}}
+  {{input value=localEndsAt disabled=isTimeZoneIdNotSet placeholder=isTimeZoneIdNotSetPlaceholder size=50}}
 </div>
 
 <button {{action 'save'}}>
@@ -51,6 +51,10 @@
     Create
   {{/if}}
   Auction
+</button>
+
+<button {{action 'cancel'}}>
+  Cancel
 </button>
 
 {{yield}}

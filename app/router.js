@@ -11,19 +11,20 @@ Router.map(function() {
 
   this.route('organizations', {}, function() {
     this.route('new', {});
-  });
-  this.route('organization', { path: 'organizations/:organization_id' }, function() {
-    this.route('auctions', {}, function() {
-      this.route('new', {});
-    });
-    this.route('auction', { path: 'auctions/:auction_id' }, function() {
-      this.route('donations', {}, function() {
+    this.route('organization', { path: ':organization_id' }, function() {
+      this.route('auctions', {}, function() {
         this.route('new', {});
+        this.route('auction', { path: ':auction_id' }, function() {
+          this.route('donations', {}, function() {
+            this.route('new', {});
+            this.route('donation', { path: ':donation_id' }, function() {
+              this.route('edit', {});
+            });
+          });
+
+          this.route('edit', {});
+        });
       });
-      this.route('donation', { path: 'donations/:donation_id' }, function() {
-        this.route('edit', {});
-      });
-      this.route('edit', {});
     });
   });
 });

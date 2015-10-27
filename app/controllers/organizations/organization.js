@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   queryParams: ['editOrganizationName'],
 
-  editOrganizationName: false,
+  editOrganizationName: 'false',
 
   isEditable: Ember.computed('editOrganizationName', function() {
     if (this.get('editOrganizationName')) {
@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
 
   actions: {
     toggleIsEditable() {
-      this.set('editOrganizationName', (!this.get('isEditable')).toString());
+      this.set('editOrganizationName', (!this.get('isEditable'))).toString();
     },
     saveOrganization(organization) {
       let self = this;

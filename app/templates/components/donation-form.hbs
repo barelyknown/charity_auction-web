@@ -28,8 +28,8 @@
   <label>Donor</label>
   <select onchange={{action 'setDonor' value="target.value"}}>
     <option>Select a donor</option>
-    {{#each donors as |donor|}}
-      <option value={{donor.id}} selected={{eq donor.id donation.donor.id}}>{{donor.name}}</option>
+    {{#each persistedUsers as |user|}}
+      <option value={{user.id}} selected={{eq user.id donation.donor.id}}>{{user.name}}</option>
     {{/each}}
   </select>
 </div>

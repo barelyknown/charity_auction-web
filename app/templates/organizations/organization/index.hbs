@@ -1,0 +1,11 @@
+<h4>Auctions</h4>
+{{link-to 'New Auction' 'organizations.organization.auctions.new'}}
+<ul>
+  {{#each model.auctions as |auction|}}
+    {{#if auction.id}}
+      <li>{{link-to auction.name 'organizations.organization.auctions.auction' auction}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+{{outlet}}
