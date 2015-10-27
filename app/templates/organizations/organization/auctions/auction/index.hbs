@@ -57,11 +57,13 @@
 {{link-to 'New Donation' 'organizations.organization.auctions.auction.donations.new'}}
 <ul>
   {{#each model.donations as |donation|}}
-    <li>
-      {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
-        {{donation.title}}
-      {{/link-to}}
-    </li>
+    {{#if donation.id}}
+      <li>
+        {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
+          {{donation.title}}
+        {{/link-to}}
+      </li>
+    {{/if}}
   {{/each}}
 </ul>
 
