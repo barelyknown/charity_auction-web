@@ -1,0 +1,43 @@
+<div>
+
+  <h3>Donation</h3>
+
+  <dl>
+    <dt>Title</dt>
+    <dd>{{model.title}}</dd>
+
+    <dt>Category</dt>
+    <dd>{{model.donationCategory.name}}</dd>
+
+    <dt>Donor</dt>
+    <dd>{{model.donor.name}}</dd>
+
+    <dt>Display Description</dt>
+    <dd>{{model.displayDescription}}</dd>
+
+    <dt>Quantity</dt>
+    <dd>{{model.quantity}}</dd>
+
+    <dt>Estimated Value</dt>
+    <dd>{{model.estimatedValueAmount}}</dd>
+
+    <dt>Minimum Bid Amount</dt>
+    <dd>{{model.minimumBidAmount}}</dd>
+
+    <dt>Admin Follow Up Needed?</dt>
+    <dd>{{model.adminFollowUpNeeded}}</dd>
+
+    <dt>Fullfilment Type</dt>
+    <dd>{{model.fulfillmentType}}</dd>
+
+    <dt>Bid Type</dt>
+    <dd>{{model.bidType.name}}</dd>
+
+    <dt>Redemption Window Starts At</dt>
+    <dd>{{moment-format model.redemptionWindowStartsAt timeZone=model.auction.timeZoneId}}</dd>
+
+    <dt>Redemption Window Ends At</dt>
+    <dd>{{moment-format model.redemptionWindowEndsAt timeZone=model.auction.timeZoneId}}</dd>            
+  </dl>
+
+</div>

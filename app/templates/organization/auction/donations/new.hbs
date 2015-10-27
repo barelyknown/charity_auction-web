@@ -1,5 +1,7 @@
 <h5>New Donation</h5>
 
+<p>Dates should be in the format "YYYY-MM-DD hh:mm".</p>
+
 <div class="input-group">
   <label>Title</label>
   {{focus-input value=model.title}}
@@ -8,13 +10,77 @@
 <div class="input-group">
   <label>Donation Category</label>
   <select onchange={{action 'setDonationCategory' value="target.value"}}>
-    <option></option>
+    <option>Select a category</option>
     {{#each donationCategories as |donationCategory|}}
       <option value={{donationCategory.id}}>{{donationCategory.name}}</option>
     {{/each}}
   </select>
 </div>
 
+<div class="input-group">
+  <label>Donor</label>
+  <select onchange={{action 'setDonor' value="target.value"}}>
+    <option>Select a donor</option>
+    {{#each donors as |donor|}}
+      <option value={{donor.id}} selected={{eq donor.id model.donor.id}}>{{donor.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="input-group">
+  <label>Display Description</label>
+  {{input value=model.displayDescription}}
+</div>
+
+<div class="input-group">
+  <label>Quantity</label>
+  {{input value=model.quantity}}
+</div>
+
+<div class="input-group">
+  <label>Estimated Value</label>
+  {{input value=model.estimatedValueAmount}}
+</div>
+
+<div class="input-group">
+  <label>Minimum Bid Amount</label>
+  {{input value=model.minimumBidAmount}}
+</div>
+
+<div class="input-group">
+  <label>Admin Follow Up Needed?</label>
+  {{input type='checkbox' checked=model.adminFollowUpNeeded}}
+</div>
+
+<div class="input-group">
+  <label>Fulfillment Type</label>
+  <select onchange={{action (mut model.fulfillmentType) value="target.value"}}>
+    <option>Select a fulfillment type</option>
+    {{#each fulfillmentTypes as |fulfillmentType|}}
+      <option value={{fulfillmentType}} selected={{eq fulfillmentType model.fulfillmentType}}>{{fulfillmentType}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="input-group">
+  <label>Bid Type</label>
+  <select onchange={{action 'setBidType' value="target.value"}}>
+    <option>Select a bid type</option>
+    {{#each bidTypes as |bidType|}}
+      <option value={{bidType.id}} selected={{eq bidType.id model.bidType.id}}>{{bidType.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="input-group">
+  <label>Redemption Window Starts At</label>
+  {{input value=localRedemptionWindowStartsAt}}
+</div>
+
+<div class="input-group">
+  <label>Redemption Window Ends At</label>
+  {{input value=localRedemptionWindowEndsAt}}
+</div>
 
 <button {{action 'saveDonation'}}>Save</button>
 

@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     return this.get('sessionUser.user').then(function(user) {
       return self.get('store').createRecord('donation', {
         auction: self.modelFor('organization.auction'),
-        donor: user
+        quantity: 1
       });
     });
   },

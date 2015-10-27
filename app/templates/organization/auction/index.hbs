@@ -15,7 +15,11 @@
 {{link-to 'New Donation' 'organization.auction.donations.new'}}
 <ul>
   {{#each model.donations as |donation|}}
-    <li>{{donation.title}}</li>
+    <li>
+      {{#link-to 'organization.auction.donation.index' donation}}
+        {{donation.title}}
+      {{/link-to}}
+    </li>
   {{/each}}
 </ul>
 
