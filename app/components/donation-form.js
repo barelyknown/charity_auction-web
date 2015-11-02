@@ -11,15 +11,20 @@ export default Ember.Component.extend({
   }.property(),
 
 
-  allUsers: function() {
-    return this.get('store').findAll('user');
-  }.property(),
+  potentialDonors: [],
 
-  persistedUsers: Ember.computed('allUsers.@each.id', function() {
-    return this.get('allUsers').filter(function(user) {
-      return parseInt(user.get('id')) > 0;
+  setPotentialDonors: Ember.on('init', Ember.observer('donation.auction.donors.[]','donation.donationDonors.[]', function() {
+    Ember.RSVP.hash({
+      donationDonors: this.get('donation.donationDonors'),
+      auctionDonors: this.get('donation.auction.donors')
+    }).then((results) => {
+      this.set('potentialDonors',
+        results.auctionDonors.filter((donor) => {
+          return !results.donationDonors.mapBy('donor.id').contains(donor.get('id'));
+        })
+      );
     });
-  }),
+  })),
 
   bidTypes: function() {
     return this.get('store').findAll('bid-type');
@@ -65,13 +70,6 @@ export default Ember.Component.extend({
         })
       );
     },
-    setDonor(userId) {
-      this.get('donation').set('donor',
-        this.get('persistedUsers').find(function(user) {
-          return user.get('id') === userId;
-        })
-      );
-    },
     setBidType(bidTypeId) {
       this.get('donation').set('bidType',
         this.get('bidTypes').find(function(bidType) {
@@ -79,5 +77,28 @@ export default Ember.Component.extend({
         })
       );
     },
+    addDonor(element) {
+      const donorId = $(element.target).val();
+      if (donorId) {
+        $(element.target).val('');
+        this.get('store').findRecord('donor', donorId).then((donor) => {
+          const newDonationDonor = this.get('store').createRecord('donation-donor', {
+            donation: this.get('donation'),
+            donor: donor
+          });
+          this.get('donation.donationDonors').pushObject(newDonationDonor);
+        });
+      }
+    },
+    removeDonationDonor(donationDonor) {
+      if (donationDonor.get('isNew')) {
+        this.get('donation.donationDonors').removeObject(donationDonor);
+      } else {
+        donationDonor.deleteRecord();
+      }
+    },
+    undoRemoveDonationDonor(donationDonor) {
+      donationDonor.rollbackAttributes();
+    }
   }
 });

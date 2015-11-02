@@ -25,16 +25,6 @@
 </div>
 
 <div class="input-group">
-  <label>Donor</label>
-  <select onchange={{action 'setDonor' value="target.value"}}>
-    <option>Select a donor</option>
-    {{#each persistedUsers as |user|}}
-      <option value={{user.id}} selected={{eq user.id donation.donor.id}}>{{user.name}}</option>
-    {{/each}}
-  </select>
-</div>
-
-<div class="input-group">
   <label>Display Description</label>
   {{textarea value=donation.displayDescription rows=10 cols=80}}
 </div>
@@ -87,6 +77,29 @@
 <div class="input-group">
   <label>Redemption Window Ends At</label>
   {{input value=localRedemptionWindowEndsAt}}
+</div>
+
+<div class="input-group">
+  <label>Donors</label>
+  {{#if potentialDonors}}
+    <select onchange={{action 'addDonor'}}>
+      <option value=''>Add a donor</option>
+      {{#each potentialDonors as |donor|}}
+        <option value={{donor.id}}>{{donor.user.name}}</option>
+      {{/each}}
+    </select>
+  {{/if}}
+  <div>
+    <ul>
+      {{#each donation.donationDonors as |donationDonor|}}
+        {{#if donationDonor.isDeleted}}
+          <li><del>{{donationDonor.donor.user.name}}</del> <button {{action 'undoRemoveDonationDonor' donationDonor}}>Undo</button></li>
+        {{else}}
+          <li>{{donationDonor.donor.user.name}} <button {{action 'removeDonationDonor' donationDonor}}>Remove</button></li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
 </div>
 
 <button {{action 'save'}}>Save</button>

@@ -1,7 +1,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  donor: DS.belongsTo('user'),
   auction: DS.belongsTo('auction'),
   donationCategory: DS.belongsTo('donation-category'),
   title: DS.attr(),
@@ -13,5 +12,6 @@ export default DS.Model.extend({
   fulfillmentType: DS.attr(),
   bidType: DS.belongsTo('bid-type'),
   redemptionWindowStartsAt: DS.attr('date'),
-  redemptionWindowEndsAt: DS.attr('date')
+  redemptionWindowEndsAt: DS.attr('date'),
+  donationDonors: DS.hasMany('donation-donor')
 });

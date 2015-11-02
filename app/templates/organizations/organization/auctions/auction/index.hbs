@@ -67,4 +67,16 @@
   {{/each}}
 </ul>
 
+<h5>Donors</h5>
+{{link-to 'New Donor' 'organizations.organization.auctions.auction.donors.new'}}
+<ul>
+  {{#each model.donors as |donor|}}
+    {{#if donor.id}}
+      <li>
+        {{donor.user.name}} <button {{action 'removeDonor' donor}}>Remove</button>
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
 {{outlet}}

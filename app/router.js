@@ -23,6 +23,10 @@ Router.map(function() {
           });
 
           this.route('edit', {});
+
+          this.route('donors', {}, function() {
+            this.route('new', {});
+          });
         });
       });
     });

@@ -40,6 +40,18 @@
 
     <dt>Redemption Window Ends At</dt>
     <dd>{{moment-format model.redemptionWindowEndsAt timeZone=model.auction.timeZoneId}}</dd>
+
+    <dt>Donors</dt>
+    <dd>
+      <ul>
+        {{#each model.donationDonors as |donationDonor|}}
+          <li>{{donationDonor.donor.user.name}}</li>
+        {{/each}}
+      </ul>
+      {{#unless model.donationDonors}}
+        None specified
+      {{/unless}}
+    </dd>
   </dl>
 
 </div>

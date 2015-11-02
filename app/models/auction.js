@@ -15,5 +15,7 @@ export default DS.Model.extend({
 
   organization: DS.belongsTo('organization'),
 
-  donations: DS.hasMany('donation')
+  donations: DS.hasMany('donation'),
+
+  donors: DS.hasMany('donors')
 });

@@ -1,0 +1,15 @@
+<h5>Create Auction Donor</h5>
+
+<select onchange={{action 'setUser' value='target.value'}}>
+  <option value=''>Select a user to make a donor</option>
+  {{#each potentialUsers as |user|}}
+    {{#if user.isLoaded}}
+      <option value={{user.id}}>{{user.name}}</option>
+    {{/if}}
+  {{/each}}
+</select>
+
+<button {{action 'create'}} disabled={{not donor.user}}>
+  Add Donor to Auction
+</button>
+{{yield}}
