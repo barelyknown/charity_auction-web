@@ -6,11 +6,6 @@
 </div>
 
 <div class="input-group">
-  <label>Mobile Phone Number</label>
-  {{input value=model.mobilePhoneNumber}}
-</div>
-
-<div class="input-group">
   <label>Email Address</label>
   {{input value=model.emailAddress}}
 </div>
@@ -21,10 +16,15 @@
 </div>
 
 <div class="input-group">
+  <label>Mobile Phone Number</label>
+  {{input value=model.mobilePhoneNumber}}
+</div>
+
+<div class="input-group">
   <label>Physical Address</label>
   {{textarea value=model.physicalAddress}}
 </div>
 
-<button {{action 'saveUser'}}>Save User</button>
+<button {{action 'saveUser'}} disabled={{not isValid}}>Save User</button>
 
 {{outlet}}

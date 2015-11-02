@@ -45,11 +45,6 @@
 </div>
 
 <div class="input-group">
-  <label>Admin Follow Up Needed?</label>
-  {{input type='checkbox' checked=donation.adminFollowUpNeeded}}
-</div>
-
-<div class="input-group">
   <label>Fulfillment Type</label>
   <select onchange={{action (mut donation.fulfillmentType) value="target.value"}}>
     <option>Select a fulfillment type</option>
@@ -77,6 +72,11 @@
 <div class="input-group">
   <label>Redemption Window Ends At</label>
   {{input value=localRedemptionWindowEndsAt}}
+</div>
+
+<div class="input-group">
+  <label>Notes</label>
+  {{textarea value=donation.notes cols=80 rows=10}}
 </div>
 
 <div class="input-group">

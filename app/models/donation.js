@@ -8,10 +8,10 @@ export default DS.Model.extend({
   quantity: DS.attr('number'),
   estimatedValueAmount: DS.attr('number'),
   minimumBidAmount: DS.attr('number'),
-  adminFollowUpNeeded: DS.attr('boolean'),
   fulfillmentType: DS.attr(),
   bidType: DS.belongsTo('bid-type'),
   redemptionWindowStartsAt: DS.attr('date'),
   redemptionWindowEndsAt: DS.attr('date'),
-  donationDonors: DS.hasMany('donation-donor')
+  donationDonors: DS.hasMany('donation-donor'),
+  notes: DS.attr('string')
 });
