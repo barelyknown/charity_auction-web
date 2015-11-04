@@ -93,4 +93,15 @@
     </li>
   {{/each}}
 </ul>
+
+<h5>Bidders</h5>
+<ul>
+  {{#each model.bidders as |bidder|}}
+    <li>
+      {{#each bidder.tickets as |ticket|}}
+        {{ticket.user.name}}
+      {{/each}}
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}
