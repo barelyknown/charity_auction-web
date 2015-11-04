@@ -79,4 +79,18 @@
   {{/each}}
 </ul>
 
+<h5>Tickets</h5>
+{{link-to 'New Ticket' 'organizations.organization.auctions.auction.tickets.new'}}
+
+<ul>
+  {{#each model.tickets as |ticket|}}
+    <li>
+      {{ticket.number}}: {{ticket.user.name}}
+      {{link-to 'edit' 'organizations.organization.auctions.auction.tickets.ticket.edit' ticket}}
+      <button {{action 'destroyTicket' ticket}}>
+        destroy
+      </button>
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}

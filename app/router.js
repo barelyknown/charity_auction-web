@@ -27,6 +27,13 @@ Router.map(function() {
           this.route('donors', {}, function() {
             this.route('new', {});
           });
+
+          this.route('tickets', {}, function() {
+            this.route('new', {});
+            this.route('ticket', { path: ':ticket_id' }, function() {
+              this.route('edit', {});
+            });
+          });
         });
       });
     });

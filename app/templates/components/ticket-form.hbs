@@ -1,0 +1,23 @@
+<div>
+  <label>User</label>
+  <select onchange={{action 'setUser' value='target.value'}}>
+    <option value=''>Select a user</option>
+    {{#each allUsers as |user|}}
+      <option value={{user.id}} selected={{eq user.id ticket.user.id}}>{{user.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div>
+  <label>Price</label>
+  {{input value=ticket.price}}
+</div>
+
+<div>
+  <label>Number</label>
+  {{input value=ticket.number}}
+</div>
+
+<button {{action 'save'}} disabled={{not ticket.isValid}}>
+  Save
+</button>
