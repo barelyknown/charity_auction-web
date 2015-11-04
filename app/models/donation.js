@@ -3,6 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   auction: DS.belongsTo('auction'),
   donationCategory: DS.belongsTo('donation-category'),
+  bidGroup: DS.belongsTo('bid-group'),
   title: DS.attr(),
   displayDescription: DS.attr(),
   quantity: DS.attr('number'),

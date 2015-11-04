@@ -1,0 +1,24 @@
+<div>
+  <label>Bid Type</label>
+  <select onchange={{action 'setBidType' value='target.value'}}>
+    <option value=''>Select a bid type</option>
+    {{#each bidTypes as |bidType|}}
+      <option selected={{eq bidType.id bidGroup.bidType.id}} value={{bidType.id}}>{{bidType.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div>
+  <label>Name</label>
+  {{input value=bidGroup.name}}
+</div>
+
+
+<div>
+  <label>Description</label>
+  {{textarea value=bidGroup.description cols=80 rows=10}}
+</div>
+
+<button {{action 'save'}} disabled={{not bidGroup.isValid}}>
+  Save
+</button>

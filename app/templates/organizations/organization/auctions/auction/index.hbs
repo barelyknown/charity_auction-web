@@ -67,6 +67,17 @@
   {{/each}}
 </ul>
 
+<h5>Bid Groups</h5>
+{{link-to 'New Bid Group' 'organizations.organization.auctions.auction.bid-groups.new'}}
+<ul>
+  {{#each model.bidGroups as |bidGroup|}}
+    <li>
+      {{bidGroup.name}}
+      {{link-to 'edit' 'organizations.organization.auctions.auction.bid-groups.bid-group.edit' bidGroup}}
+    </li>
+  {{/each}}
+</ul>
+
 <h5>Donors</h5>
 {{link-to 'New Donor' 'organizations.organization.auctions.auction.donors.new'}}
 <ul>

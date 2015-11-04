@@ -10,7 +10,6 @@ export default Ember.Component.extend({
     return this.get('store').findAll('donation-category');
   }.property(),
 
-
   potentialDonors: [],
 
   setPotentialDonors: Ember.on('init', Ember.observer('donation.auction.donors.[]','donation.donationDonors.[]', function() {
@@ -76,6 +75,12 @@ export default Ember.Component.extend({
           return bidType.get('id') === bidTypeId;
         })
       );
+    },
+    setBidGroup(bidGroupId) {
+      this.get('donation.auction.bidGroups').then((bidGroups) => {
+        const matchingBidGroup = bidGroups.find((bidGroup) => { return bidGroup.get('id') === bidGroupId; });
+        this.get('donation').set('bidGroup', matchingBidGroup);
+      });
     },
     addDonor(element) {
       const donorId = $(element.target).val();

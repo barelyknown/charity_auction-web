@@ -34,6 +34,14 @@ Router.map(function() {
               this.route('edit', {});
             });
           });
+
+          this.route('bid-groups', {}, function() {
+            this.route('new', {});
+
+            this.route('bid-group', { path: ':bid_group_id'}, function() {
+              this.route('edit', {});
+            });
+          });
         });
       });
     });

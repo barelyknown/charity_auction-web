@@ -24,6 +24,16 @@
   </select>
 </div>
 
+<div>
+  <label>Bid Group</label>
+  <select onchange={{action 'setBidGroup' value='target.value'}}>
+    <option>Select a bid group</option>
+    {{#each donation.auction.bidGroups as |bidGroup|}}
+      <option selected={{eq bidGroup.id donation.bidGroup.id}} value={{bidGroup.id}}>{{bidGroup.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
 <div class="input-group">
   <label>Display Description</label>
   {{textarea value=donation.displayDescription rows=10 cols=80}}

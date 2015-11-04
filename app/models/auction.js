@@ -17,9 +17,11 @@ export default DS.Model.extend({
 
   donations: DS.hasMany('donation'),
 
-  donors: DS.hasMany('donors'),
+  donors: DS.hasMany('donor'),
 
-  tickets: DS.hasMany('tickets'),
+  tickets: DS.hasMany('ticket'),
 
-  bidders: DS.hasMany('bidders')
+  bidders: DS.hasMany('bidder'),
+
+  bidGroups: DS.hasMany('bid-group')
 });
