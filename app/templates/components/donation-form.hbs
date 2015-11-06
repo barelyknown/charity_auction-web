@@ -40,11 +40,6 @@
 </div>
 
 <div class="input-group">
-  <label>Minimum Bid Amount</label>
-  {{input value=donation.minimumBidAmount}}
-</div>
-
-<div class="input-group">
   <label>Fulfillment Type</label>
   <select onchange={{action (mut donation.fulfillmentType) value="target.value"}}>
     <option>Select a fulfillment type</option>
