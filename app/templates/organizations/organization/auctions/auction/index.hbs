@@ -103,9 +103,7 @@
 <ul>
   {{#each model.bidders as |bidder|}}
     <li>
-      {{#each bidder.tickets as |ticket|}}
-        {{ticket.user.name}}
-      {{/each}}
+      {{format-bidder-name bidder=bidder}}
     </li>
   {{/each}}
 </ul>
