@@ -1,0 +1,33 @@
+<div>
+  <label>Donation</label>
+  <select onchange={{action 'setDonation' value='target.value'}}>
+    <option value=''>Select a donation</option>
+    {{#each unassignedDonations as |donation|}}
+      <option value={{donation.id}} selected={{eq donation.id auctionItem.donation.id}}>{{donation.title}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div>
+  <label>Bid Type</label>
+  <select onchange={{action 'setBidType' value='target.value'}}>
+    <option value=''>Select a bid type</option>
+    {{#each bidTypes as |bidType|}}
+      <option value={{bidType.id}} selected={{eq bidType.id auctionItem.bidType.id}}>{{bidType.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div>
+  <label>Bid Group</label>
+  <select onchange={{action 'setBidGroup' value='target.value'}}>
+    <option value=''>Select a bid group</option>
+    {{#each auctionItem.auction.bidGroups as |bidGroup|}}
+      <option value={{bidGroup.id}} selected={{eq bidGroup.id auctionItem.bidGroup.id}}>{{bidGroup.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<button {{action 'save'}} disabled={{not auctionItem.isValid}}>
+  Save
+</button>

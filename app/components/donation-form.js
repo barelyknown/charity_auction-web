@@ -25,10 +25,6 @@ export default Ember.Component.extend({
     });
   })),
 
-  bidTypes: function() {
-    return this.get('store').findAll('bid-type');
-  }.property(),
-
   fulfillmentTypes: ['item', 'certificate'],
 
   localRedemptionWindowStartsAt: Ember.computed('donation.auction.timeZoneId', {
@@ -68,19 +64,6 @@ export default Ember.Component.extend({
           return donationCategory.get('id') === donationCategoryId;
         })
       );
-    },
-    setBidType(bidTypeId) {
-      this.get('donation').set('bidType',
-        this.get('bidTypes').find(function(bidType) {
-          return bidType.get('id') === bidTypeId;
-        })
-      );
-    },
-    setBidGroup(bidGroupId) {
-      this.get('donation.auction.bidGroups').then((bidGroups) => {
-        const matchingBidGroup = bidGroups.find((bidGroup) => { return bidGroup.get('id') === bidGroupId; });
-        this.get('donation').set('bidGroup', matchingBidGroup);
-      });
     },
     addDonor(element) {
       const donorId = $(element.target).val();

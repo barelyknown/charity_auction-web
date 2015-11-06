@@ -1,0 +1,49 @@
+<div class="auction-program">
+
+  <div class="auction-program-cover">
+    <h1>{{model.name}}</h1>
+    <div class="auction-program-organization-subhead">
+      {{model.organization.name}}
+    </div>
+    <div class="auction-program-location">
+      {{format-newlines model.physicalAddress}}
+    </div>
+    <div class="auction-program-date">
+      {{moment-format model.startsAt}}
+    </div>
+  </div>
+
+  <div class="auction-program-bid-groups">
+    {{#each model.sortedBidGroups as |bidGroup|}}
+      <div class="auction-program-bid-group">
+        <h2>{{bidGroup.name}}</h2>
+        {{format-newlines-into-paragraphs bidGroup.description}}
+
+        <div class='auction-program-bid-group-donations'>
+          {{#each bidGroup.donations as |donation|}}
+            <div class='auction-program-bid-group-donation'>
+              <table class="auction-program-bid-group-donation-summary">
+                <tbody>
+                  <tr>
+                    <th>{{donation.id}}</th>
+                    <th>{{donation.title}}</th>
+                    <th>${{donation.estimatedValueAmount}}</th>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="auction-program-bid-group-donation-detail">
+                <div class="auction-program-bid-group-donation-detail-donor">
+                  {{join-donation-donors donation=donation}}
+                </div>
+                <div class="auction-program-bid-group-donation-detail-description">
+                  {{format-newlines-into-paragraphs donation.displayDescription}}
+                </div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+</div>

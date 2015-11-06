@@ -17,11 +17,15 @@ export default DS.Model.extend({
 
   donations: DS.hasMany('donation'),
 
+  auctionItems: DS.hasMany('auction-item'),
+
   donors: DS.hasMany('donor'),
 
   tickets: DS.hasMany('ticket'),
 
   bidders: DS.hasMany('bidder'),
 
-  bidGroups: DS.hasMany('bid-group')
+  bidGroups: DS.hasMany('bid-group'),
+
+  sortedBidGroups: Ember.computed.sort('bidGroups.content','sequence')
 });

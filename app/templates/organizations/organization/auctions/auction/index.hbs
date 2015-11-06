@@ -1,3 +1,5 @@
+{{link-to 'Program' 'programs.auction' model}}
+
 {{link-to 'Edit Auction' 'organizations.organization.auctions.auction.edit' model}}
 
 <dl>
@@ -53,27 +55,19 @@
   </dd>
 </dl>
 
-<h5>Donations</h5>
-{{link-to 'New Donation' 'organizations.organization.auctions.auction.donations.new'}}
-<ul>
-  {{#each model.donations as |donation|}}
-    {{#if donation.id}}
-      <li>
-        {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
-          {{donation.title}}
-        {{/link-to}}
-      </li>
-    {{/if}}
-  {{/each}}
-</ul>
-
 <h5>Bid Groups</h5>
 {{link-to 'New Bid Group' 'organizations.organization.auctions.auction.bid-groups.new'}}
 <ul>
-  {{#each model.bidGroups as |bidGroup|}}
+  {{#each model.sortedBidGroups as |bidGroup|}}
     <li>
       {{bidGroup.name}}
       {{link-to 'edit' 'organizations.organization.auctions.auction.bid-groups.bid-group.edit' bidGroup}}
+      <button {{action 'moveBidGroup' bidGroup 'up'}}>
+        up
+      </button>
+      <button {{action 'moveBidGroup' bidGroup 'down'}}>
+        down
+      </button>
     </li>
   {{/each}}
 </ul>
@@ -115,4 +109,35 @@
     </li>
   {{/each}}
 </ul>
+
+
+<h5>Donations</h5>
+{{link-to 'New Donation' 'organizations.organization.auctions.auction.donations.new'}}
+<ul>
+  {{#each model.donations as |donation|}}
+    {{#if donation.id}}
+      <li>
+        {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
+          {{donation.title}}
+        {{/link-to}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h5>Auction Items</h5>
+{{link-to 'New Auction Item' 'organizations.organization.auctions.auction.auction-items.new'}}
+
+<ul>
+  {{#each model.auctionItems as |auctionItem|}}
+    {{#if auctionItem.id}}
+      <li>
+        {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.edit' auctionItem}}
+          {{auctionItem.donation.title}}
+        {{/link-to}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+
 {{outlet}}

@@ -1,0 +1,3 @@
+{{#each donation.donationDonors as |donationDonor index|}}
+  {{donationDonor.donor.user.name}}{{if (eq index lastIndex) '' ', '}}
+{{/each}}

@@ -42,9 +42,21 @@ Router.map(function() {
               this.route('edit', {});
             });
           });
+
+          this.route('auction-items', {}, function() {
+            this.route('new', {});
+
+            this.route('auction-item', { path: ':auction_item_id' }, function() {
+              this.route('edit', {});
+            });
+          });
         });
       });
     });
+  });
+
+  this.route('programs', {}, function() {
+    this.route('auction', { path: 'auction/:auction_id' });
   });
 });
 

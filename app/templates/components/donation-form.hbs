@@ -19,17 +19,7 @@
   <select onchange={{action 'setDonationCategory' value="target.value"}}>
     <option>Select a category</option>
     {{#each donationCategories as |donationCategory|}}
-      <option value={{donationCategory.id}}>{{donationCategory.name}}</option>
-    {{/each}}
-  </select>
-</div>
-
-<div>
-  <label>Bid Group</label>
-  <select onchange={{action 'setBidGroup' value='target.value'}}>
-    <option>Select a bid group</option>
-    {{#each donation.auction.bidGroups as |bidGroup|}}
-      <option selected={{eq bidGroup.id donation.bidGroup.id}} value={{bidGroup.id}}>{{bidGroup.name}}</option>
+      <option value={{donationCategory.id}} selected={{eq donationCategory.id donation.donationCategory.id}}>{{donationCategory.name}}</option>
     {{/each}}
   </select>
 </div>
@@ -60,16 +50,6 @@
     <option>Select a fulfillment type</option>
     {{#each fulfillmentTypes as |fulfillmentType|}}
       <option value={{fulfillmentType}} selected={{eq fulfillmentType donation.fulfillmentType}}>{{fulfillmentType}}</option>
-    {{/each}}
-  </select>
-</div>
-
-<div class="input-group">
-  <label>Bid Type</label>
-  <select onchange={{action 'setBidType' value="target.value"}}>
-    <option>Select a bid type</option>
-    {{#each bidTypes as |bidType|}}
-      <option value={{bidType.id}} selected={{eq bidType.id donation.bidType.id}}>{{bidType.name}}</option>
     {{/each}}
   </select>
 </div>
