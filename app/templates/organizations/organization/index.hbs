@@ -19,7 +19,7 @@
 <ul>
   {{#each model.auctions as |auction|}}
     {{#if auction.id}}
-      <li>{{link-to auction.name 'organizations.organization.auctions.auction' auction}}</li>
+      <li>{{link-to auction.name 'organizations.organization.auctions.auction' auction.id}}</li>
     {{/if}}
   {{/each}}
 </ul>
