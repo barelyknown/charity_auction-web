@@ -1,0 +1,26 @@
+<div class="input-group">
+  <label>Name</label>
+  {{input value=user.name}}
+</div>
+
+<div class="input-group">
+  <label>Email Address</label>
+  {{input value=user.emailAddress}}
+</div>
+
+<div class="input-group">
+  <label>Password</label>
+  {{input type='password' value=user.password}}
+</div>
+
+<div class="input-group">
+  <label>Mobile Phone Number</label>
+  {{input value=user.mobilePhoneNumber}}
+</div>
+
+<div class="input-group">
+  <label>Physical Address</label>
+  {{textarea value=user.physicalAddress}}
+</div>
+
+<button {{action 'save'}}>Save</button>

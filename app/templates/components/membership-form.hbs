@@ -1,0 +1,13 @@
+<div class="">
+  <label for="">User</label>
+  <select onchange={{action 'setUser' value='target.value'}}>
+    <option value=''>Select user</option>
+    {{#each sortedUsers as |user|}}
+      <option value={{user.id}} selected={{eq user.id memberships.user.id}}>{{user.name}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<button {{action 'save'}}>
+  Save
+</button>

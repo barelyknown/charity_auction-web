@@ -7,7 +7,14 @@ export default Ember.Route.extend({
       'tickets.user',
       'bidders',
       'bidders.tickets',
-      'bidders.tickets.user'
+      'bidders.tickets.user',
+      'organization',
+      'bid-groups',
+      'bid-groups.auction-items',
+      'bid-groups.auction-items.donation',
+      'bid-groups.auction-items.donation.donation-donors',
+      'bid-groups.auction-items.donation.donation-donors.donor',
+      'bid-groups.auction-items.donation.donation-donors.donor.user',
     ];
     return this.get('store').findRecord('auction', params.auction_id, {
       adapterOptions: {

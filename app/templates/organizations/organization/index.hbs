@@ -1,3 +1,19 @@
+<h4>Memberships</h4>
+{{link-to 'New Memberhip' 'organizations.organization.memberships.new'}}
+
+<ul>
+  {{#each model.memberships as |membership|}}
+    <li>
+      {{#link-to 'users.user.edit' membership.user}}
+        {{membership.user.name}}
+      {{/link-to}}
+      <button {{action 'removeMembership' membership}}>
+        Remove
+      </button>
+    </li>
+  {{/each}}
+</ul>
+
 <h4>Auctions</h4>
 {{link-to 'New Auction' 'organizations.organization.auctions.new'}}
 <ul>

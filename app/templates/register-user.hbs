@@ -1,30 +1,4 @@
 <h3>Register User</h3>
 
-<div class="input-group">
-  <label>Name</label>
-  {{input value=model.name}}
-</div>
-
-<div class="input-group">
-  <label>Email Address</label>
-  {{input value=model.emailAddress}}
-</div>
-
-<div class="input-group">
-  <label>Password</label>
-  {{input type='password' value=model.password}}
-</div>
-
-<div class="input-group">
-  <label>Mobile Phone Number</label>
-  {{input value=model.mobilePhoneNumber}}
-</div>
-
-<div class="input-group">
-  <label>Physical Address</label>
-  {{textarea value=model.physicalAddress}}
-</div>
-
-<button {{action 'saveUser'}} disabled={{not isValid}}>Save User</button>
-
+{{user-form user=model}}
 {{outlet}}

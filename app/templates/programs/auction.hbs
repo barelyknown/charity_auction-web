@@ -34,9 +34,14 @@
               <div class="auction-program-bid-group-auction-item-detail">
                 <div class="auction-program-bid-group-auction-item-donation-detail-donor">
                   {{join-donation-donors donation=auctionItem.donation}}
+                  {{#if auctionItem.minimumBidAmount}}
+                    Minimum Bid
+                    ${{auctionItem.minimumBidAmount}}
+                  {{else}}
+                  {{/if}}
                 </div>
                 <div class="auction-program-bid-group-donation-detail-description">
-                  {{format-newlines-into-paragraphs auctionItem.donation.displayDescription}}
+                  {{format-newlines-into-paragraphs auctionItem.donation.description}}
                 </div>
               </div>
             </div>

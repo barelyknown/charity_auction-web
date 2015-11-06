@@ -35,7 +35,9 @@ export default Ember.Component.extend({
     set(key, value) {
       if (Ember.isPresent(this.get('auction.timeZoneId'))) {
         const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
-        this.set('auction.donationWindowEndsAt', new Date(localMoment.tz('UTC').format()));
+        if (localMoment.isValid()) {
+          this.set('auction.donationWindowEndsAt', new Date(localMoment.tz('UTC').format()));
+        }
       }
       return value;
     }
@@ -50,7 +52,9 @@ export default Ember.Component.extend({
     set(key, value) {
       if (Ember.isPresent(this.get('auction.timeZoneId'))) {
         const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
-        this.set('auction.startsAt', new Date(localMoment.tz('UTC').format()));
+        if (localMoment.isValid()) {
+          this.set('auction.startsAt', new Date(localMoment.tz('UTC').format()));
+        }
       }
       return value;
     }
@@ -65,6 +69,9 @@ export default Ember.Component.extend({
     set(key, value) {
       if (Ember.isPresent(this.get('auction.timeZoneId'))) {
         const localMoment = moment.tz(value, "YYYY-MM-DD hh:mm", this.get('auction.timeZoneId')).clone();
+        if (localMoment.isValid()) {
+          this.set('auction.endsAt', new Date(localMoment.tz('UTC').format()));
+        }
         this.set('auction.endsAt', new Date(localMoment.tz('UTC').format()));
       }
       return value;

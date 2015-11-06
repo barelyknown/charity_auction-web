@@ -4,7 +4,7 @@ export default DS.Model.extend({
   auction: DS.belongsTo('auction'),
   donationCategory: DS.belongsTo('donation-category'),
   title: DS.attr(),
-  displayDescription: DS.attr(),
+  description: DS.attr(),
   quantity: DS.attr('number'),
   estimatedValueAmount: DS.attr('number'),
   minimumBidAmount: DS.attr('number'),

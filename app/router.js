@@ -52,11 +52,21 @@ Router.map(function() {
           });
         });
       });
+
+      this.route('memberships', {}, function() {
+        this.route('new', {});
+      });
     });
   });
 
   this.route('programs', {}, function() {
     this.route('auction', { path: 'auction/:auction_id' });
+  });
+
+  this.route('users', {}, function() {
+    this.route('user', { path: ':user_id' }, function() {
+      this.route('edit', {});
+    });
   });
 });
 

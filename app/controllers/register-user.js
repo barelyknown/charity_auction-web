@@ -25,18 +25,5 @@ export default Ember.Controller.extend({
   isValid: Ember.computed.and('isNameValid', 'isEmailAddressValid', 'isPasswordValid'),
 
   actions: {
-    saveUser() {
-      let onSuccess = (user) => {
-        if (this.get('session.isAuthenticated')) {
-          this.transitionToRoute('application');
-        } else {
-          this.send('login', user.get('emailAddress'), user.get('password'));
-        }
-      };
-      let onFailure = function(error) {
-        console.log('there are an error', error);
-      };
-      this.get('model').save().then(onSuccess, onFailure);
-    }
   }
 });
