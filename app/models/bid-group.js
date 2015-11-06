@@ -11,7 +11,7 @@ export default DS.Model.extend({
 
   sequence: DS.attr('number'),
 
-  donations: DS.hasMany('donation'),
+  auctionItems: DS.hasMany('auction-item'),
 
   isAuctionValid: Ember.computed.notEmpty('auction.content'),
 

@@ -19,24 +19,24 @@
         <h2>{{bidGroup.name}}</h2>
         {{format-newlines-into-paragraphs bidGroup.description}}
 
-        <div class='auction-program-bid-group-donations'>
-          {{#each bidGroup.donations as |donation|}}
-            <div class='auction-program-bid-group-donation'>
-              <table class="auction-program-bid-group-donation-summary">
+        <div class='auction-program-bid-group-auction-items'>
+          {{#each bidGroup.auctionItems as |auctionItem|}}
+            <div class='auction-program-bid-group-auction-item'>
+              <table class="auction-program-bid-group-auction-item-summary">
                 <tbody>
                   <tr>
-                    <th>{{donation.id}}</th>
-                    <th>{{donation.title}}</th>
-                    <th>${{donation.estimatedValueAmount}}</th>
+                    <th>{{auctionItem.donation.id}}</th>
+                    <th>{{auctionItem.donation.title}}</th>
+                    <th>${{auctionItem.donation.estimatedValueAmount}}</th>
                   </tr>
                 </tbody>
               </table>
-              <div class="auction-program-bid-group-donation-detail">
-                <div class="auction-program-bid-group-donation-detail-donor">
-                  {{join-donation-donors donation=donation}}
+              <div class="auction-program-bid-group-auction-item-detail">
+                <div class="auction-program-bid-group-auction-item-donation-detail-donor">
+                  {{join-donation-donors donation=auctionItem.donation}}
                 </div>
                 <div class="auction-program-bid-group-donation-detail-description">
-                  {{format-newlines-into-paragraphs donation.displayDescription}}
+                  {{format-newlines-into-paragraphs auctionItem.donation.displayDescription}}
                 </div>
               </div>
             </div>
