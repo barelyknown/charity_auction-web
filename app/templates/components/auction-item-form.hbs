@@ -28,6 +28,11 @@
   </select>
 </div>
 
+<div>
+  <label>Minimum Bid Amount</label>
+  {{input value=auctionItem.minimumBidAmount}}
+</div>
+
 <button {{action 'save'}} disabled={{not auctionItem.isValid}}>
   Save
 </button>
