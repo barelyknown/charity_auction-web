@@ -36,7 +36,7 @@
   <dt>Starts At</dt>
   <dd>
     {{#if model.startsAt}}
-      {{moment-format model.startsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}
+      {{moment-format model.startsAt 'MMMM Do YYYY, h:mm a z' timeZone=model.timeZoneId}}
     {{else}}
       <span class='is-blank'>
         None provided
@@ -46,7 +46,7 @@
   <dt>Ends At</dt>
   <dd>
     {{#if model.startsAt}}
-      {{moment-format model.endsAt 'MMMM Do YYYY, h:mm:ss a z' timeZone=model.timeZoneId}}
+      {{moment-format model.endsAt 'MMMM Do YYYY, h:mm a z' timeZone=model.timeZoneId}}
     {{else}}
       <span class='is-blank'>
         None provided
