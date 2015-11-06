@@ -78,7 +78,7 @@
   {{#each model.donors as |donor|}}
     {{#if donor.id}}
       <li>
-        {{donor.user.name}} <button {{action 'removeDonor' donor}}>Remove</button>
+        {{donor.user.name}}
       </li>
     {{/if}}
   {{/each}}
@@ -92,9 +92,6 @@
     <li>
       {{ticket.number}}: {{ticket.user.name}}
       {{link-to 'edit' 'organizations.organization.auctions.auction.tickets.ticket.edit' ticket}}
-      <button {{action 'destroyTicket' ticket}}>
-        destroy
-      </button>
     </li>
   {{/each}}
 </ul>
@@ -118,7 +115,7 @@
         {{#link-to 'organizations.organization.auctions.auction.donations.donation' donation}}
           {{donation.title}}
         {{/link-to}}
-         - 
+         -
         {{link-to 'edit' 'organizations.organization.auctions.auction.donations.donation.edit' donation}}
       </li>
     {{/if}}
