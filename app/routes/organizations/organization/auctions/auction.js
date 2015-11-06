@@ -17,6 +17,7 @@ export default Ember.Route.extend({
       'bid-groups.auction-items.donation.donation-donors.donor.user',
     ];
     return this.get('store').findRecord('auction', params.auction_id, {
+      reload: true,
       adapterOptions: {
         query: {
           include: includes.join()
