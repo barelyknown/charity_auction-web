@@ -1,52 +1,27 @@
 <div class="auction-program">
 
-  <div class="auction-program-cover">
-    <h1>{{model.name}}</h1>
-    <div class="auction-program-organization-subhead">
-      {{model.organization.name}}
-    </div>
-    <div class="auction-program-location">
-      {{format-newlines model.physicalAddress}}
-    </div>
-    <div class="auction-program-date">
-      {{moment-format model.startsAt}}
-    </div>
-  </div>
-
   <div class="auction-program-bid-groups">
     {{#each model.sortedBidGroups as |bidGroup|}}
       <div class="auction-program-bid-group">
-        <h2>{{bidGroup.name}}</h2>
-        {{format-newlines-into-paragraphs bidGroup.description}}
-
-        <div class='auction-program-bid-group-auction-items'>
-          {{#each bidGroup.auctionItems as |auctionItem|}}
-            <div class='auction-program-bid-group-auction-item'>
-              <table class="auction-program-bid-group-auction-item-summary">
-                <tbody>
-                  <tr>
-                    <th>{{auctionItem.donation.id}}</th>
-                    <th>{{auctionItem.donation.title}}</th>
-                    <th>${{auctionItem.donation.estimatedValueAmount}}</th>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="auction-program-bid-group-auction-item-detail">
-                <div class="auction-program-bid-group-auction-item-donation-detail-donor">
-                  {{join-donation-donors donation=auctionItem.donation}}
-                  {{#if auctionItem.minimumBidAmount}}
-                    Minimum Bid
-                    ${{auctionItem.minimumBidAmount}}
-                  {{else}}
-                  {{/if}}
-                </div>
-                <div class="auction-program-bid-group-donation-detail-description">
-                  {{format-newlines-into-paragraphs auctionItem.donation.description}}
-                </div>
-              </div>
-            </div>
-          {{/each}}
+        <h2 class="auction-program-bid-group-name">
+          {{bidGroup.name}}
+        </h2>
+        <div class="auction-program-bid-group-description">
+          {{format-newlines-into-paragraphs bidGroup.description}}
         </div>
+
+        {{#if bidGroup.groupByDonationCategory}}
+          {{#each bidGroup.uniqueDonationCategories as |donationCategory|}}
+            <h3 class="auction-program-bid-group-donation-category">
+              {{donationCategory.name}}
+            </h3>
+            {{auction-program-auction-items auctionItems=bidGroup.auctionItems donationCategory=donationCategory}}
+          {{/each}}
+
+        {{else}}
+          {{auction-program-auction-items auctionItems=bidGroup.auctionItems}}
+        {{/if}}
+
       </div>
     {{/each}}
   </div>

@@ -5,6 +5,8 @@ export default Ember.Controller.extend({
 
   sessionUser: Ember.inject.service('session-user'),
 
+  isHeaderVisible: true,
+
   actions: {
     logout() {
       this.get('session').invalidate();

@@ -1,0 +1,42 @@
+<div class='auction-program-bid-group-auction-items'>
+  {{#each matchingAuctionItems as |auctionItem|}}
+    <div class='auction-program-bid-group-auction-item'>
+      <table class="auction-program-bid-group-auction-item-summary">
+        <tbody>
+          <tr>
+            <th class="auction-program-bid-group-auction-item-number">#{{auctionItem.number}}</th>
+            <th class="auction-program-bid-group-auction-item-donation-title">{{auctionItem.donation.title}}</th>
+            <th class="auction-program-bid-group-auction-item-donation-estimated-value">
+              <span class="auction-program-bid-group-auction-item-donation-estimated-label">
+                estimated value
+              </span>
+              <span class="auction-program-bid-group-auction-item-donation-estimated-value-amount">
+                ${{auctionItem.donation.estimatedValueAmount}}
+              </span>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+      <div class="auction-program-bid-group-auction-item-detail">
+        <div class="auction-program-bid-group-auction-item-detail-header">
+          <div class="auction-program-bid-group-auction-item-donation-detail-donor">
+            {{join-donation-donors donation=auctionItem.donation}}
+          </div>
+          <div class="auction-program-bid-group-auction-item-minimum-bid-amount">
+            {{#if auctionItem.minimumBidAmount}}
+              <span class="auction-program-bid-group-auction-item-minimum-bid-amount-label">
+                minimum bid
+              </span>
+              ${{auctionItem.minimumBidAmount}}
+            {{else}}
+              &nbsp;
+            {{/if}}
+          </div>
+        </div>
+        <div class="auction-program-bid-group-donation-detail-description">
+          {{format-newlines-into-paragraphs auctionItem.donation.description}}
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

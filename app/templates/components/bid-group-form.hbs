@@ -8,6 +8,11 @@
   {{textarea value=bidGroup.description cols=80 rows=10}}
 </div>
 
+<div>
+  <label>Group by Donation Category?</label>
+  {{input type='checkbox' checked=bidGroup.groupByDonationCategory}}
+</div>
+
 <button {{action 'save'}} disabled={{not bidGroup.isValid}}>
   Save
 </button>

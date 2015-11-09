@@ -1,0 +1,67 @@
+h3.organization-name {
+  display: inline;
+  margin-right: 5px;
+}
+
+.is-blank {
+  color: gray;
+}
+
+.bid-amount-tip-label {
+  font-size: 0.8em;
+  font-weight: normal;
+  color: grey;
+  margin-right: 4px;
+}
+
+.auction-program {
+  font-family: sans-serif;
+  margin: 20px 40px 20px 40px;
+
+  .auction-program-bid-group {
+    margin-top: 50px;
+    .auction-program-bid-group-name {
+      text-align: center;
+    }
+    .auction-program-bid-group-description {
+      font-size: 1.2em;
+    }
+    .auction-program-bid-group-donation-category {
+      text-align: center;
+      font-size: 1.4em;
+      text-decoration: underline;
+    }
+  }
+
+  .auction-program-bid-group-auction-item-detail-header {
+    .auction-program-bid-group-auction-item-donation-detail-donor {
+      float: left;
+      font-style: italic;
+    }
+    .auction-program-bid-group-auction-item-minimum-bid-amount {
+      text-align: right;
+      padding-right: 3px;
+      .auction-program-bid-group-auction-item-minimum-bid-amount-label {
+        @extend .bid-amount-tip-label;
+      }
+    }
+  }
+
+  table.auction-program-bid-group-auction-item-summary {
+    width: 100%;
+    th.auction-program-bid-group-auction-item-number {
+      text-align: left;
+      width: 40px;
+    }
+    th.auction-program-bid-group-auction-item-donation-estimated-value {
+      text-align: right;
+      .auction-program-bid-group-auction-item-donation-estimated-label {
+        @extend .bid-amount-tip-label;
+      }
+    }
+    th.auction-program-bid-group-auction-item-donation-title {
+      text-align: left;
+      font-size: 1em;
+    }
+  }
+}

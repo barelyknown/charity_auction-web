@@ -126,14 +126,20 @@
 {{link-to 'New Auction Item' 'organizations.organization.auctions.auction.auction-items.new'}}
 
 <ul>
-  {{#each model.auctionItems as |auctionItem|}}
-    {{#if auctionItem.id}}
-      <li>
-        {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.edit' auctionItem}}
-          {{auctionItem.donation.title}}
-        {{/link-to}}
-      </li>
-    {{/if}}
+  {{#each model.sortedBidGroups as |bidGroup|}}
+    <li>{{bidGroup.name}}
+      <ul>
+        {{#each bidGroup.auctionItems as |auctionItem|}}
+          {{#if auctionItem.id}}
+            <li>
+              {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.edit' auctionItem}}
+                {{auctionItem.donation.title}}
+              {{/link-to}}
+            </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </li>
   {{/each}}
 </ul>
 

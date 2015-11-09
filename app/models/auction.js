@@ -27,5 +27,7 @@ export default DS.Model.extend({
 
   bidGroups: DS.hasMany('bid-group'),
 
-  sortedBidGroups: Ember.computed.sort('bidGroups.content','sequence')
+  sortBidGroupsBy: ['sequence:asc'],
+
+  sortedBidGroups: Ember.computed.sort('bidGroups.content','sortBidGroupsBy')
 });

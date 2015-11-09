@@ -57,4 +57,29 @@
     </dd>
   </dl>
 
+  <h4>Auction Item</h4>
+
+  {{#if model.auctionItem}}
+    <div class="">
+      {{link-to 'Edit the related auction item' 'organizations.organization.auctions.auction.auction-items.auction-item.edit' model.auctionItem}}
+    </div>
+  {{/if}}
+
+  <dl>
+    <dt>Bid Type</dt>
+    <dd>{{model.auctionItem.bidType.name}}</dd>
+
+    <dt>Bid Group</dt>
+    <dd>{{model.auctionItem.bidGroup.name}}</dd>
+
+    <dt>Minimum Bid Amount</dt>
+    <dd>
+      {{#if model.auctionItem.minimumBidAmount}}
+        {{model.auctionItem.minimumBidAmount}}
+      {{else}}
+        No minimum set
+      {{/if}}
+    </dd>
+  </dl>
+
 </div>

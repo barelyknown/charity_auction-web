@@ -12,6 +12,10 @@ export default Ember.Component.extend({
 
   potentialDonors: [],
 
+  bidTypes: Ember.computed(function() {
+    return this.get('store').query('bid-type', {});
+  }),
+
   setPotentialDonors: Ember.on('init', Ember.observer('donation.auction.donors.[]','donation.donationDonors.[]', function() {
     Ember.RSVP.hash({
       donationDonors: this.get('donation.donationDonors'),
@@ -87,6 +91,14 @@ export default Ember.Component.extend({
     },
     undoRemoveDonationDonor(donationDonor) {
       donationDonor.rollbackAttributes();
+    },
+    setBidType(bidTypeId) {
+      this.get('bidTypes').then((bidTypes) => {
+        const match = bidTypes.find((bidType) => {
+          return bidType.get('id') === bidTypeId;
+        });
+        this.set('donation.auctionItem.bidType', match);
+      });
     }
   }
 });

@@ -7,6 +7,12 @@
   Donation
 </h5>
 
+{{#if donation.auctionItem}}
+  <div class="">
+    {{link-to 'Edit the related auction item' 'organizations.organization.auctions.auction.auction-items.auction-item.edit' donation.auctionItem}}
+  </div>
+{{/if}}
+
 <p>Dates should be in the format "YYYY-MM-DD hh:mm".</p>
 
 <div class="input-group">
@@ -86,6 +92,23 @@
     </ul>
   </div>
 </div>
+
+<!-- <h5>Auction Item</h5> -->
+<!-- <div class="input-group">
+  <label>Minimum Bid Amount</label>
+  {{input value=donation.auctionItem.minimumBidAmount}}
+</div>
+
+<div class="input-group">
+  <label>Bid Type</label>
+  <select onchange={{action 'setBidType' value='target.value'}}>
+    <option value="">Select a bid type</option>
+    {{#each bidTypes as |bidType|}}
+      <option value={{bidType.id}} selected={{eq bidType.id donation.auctionItem.bidType.id}}>{{bidType.name}}</option>
+    {{/each}}
+  </select>
+</div> -->
+
 
 <button {{action 'save'}}>Save</button>
 

@@ -11,5 +11,6 @@ export default DS.Model.extend({
   redemptionWindowStartsAt: DS.attr('date'),
   redemptionWindowEndsAt: DS.attr('date'),
   donationDonors: DS.hasMany('donation-donor'),
-  notes: DS.attr('string')
+  notes: DS.attr('string'),
+  auctionItem: DS.belongsTo('auction-item')
 });

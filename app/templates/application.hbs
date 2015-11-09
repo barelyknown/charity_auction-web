@@ -1,16 +1,18 @@
-{{#link-to 'application'}}
-  <h2 id="title">Charity Auctions</h2>
-{{/link-to}}
+{{#if isHeaderVisible}}
+  {{#link-to 'application'}}
+    <h2 id="title">Charity Auctions</h2>
+  {{/link-to}}
 
-<div class="authentication-navigation">
-  {{link-to 'Register User' 'register-user'}}
+  <div class="authentication-navigation">
+    {{link-to 'Register User' 'register-user'}}
 
-  {{#if session.isAuthenticated}}
-    Welcome {{sessionUser.user.name}}!
-    <button {{action 'logout'}}>Logout</button>
-  {{else}}
-    {{link-to 'Login' 'login'}}
-  {{/if}}
-</div>
+    {{#if session.isAuthenticated}}
+      Welcome {{sessionUser.user.name}}!
+      <button {{action 'logout'}}>Logout</button>
+    {{else}}
+      {{link-to 'Login' 'login'}}
+    {{/if}}
+  </div>
+{{/if}}
 
 {{outlet}}
