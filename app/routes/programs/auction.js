@@ -6,6 +6,7 @@ export default Ember.Route.extend({
       'organization',
       'bid-groups',
       'bid-groups.auction-items',
+      'bid-groups.auction-items.bid-type',
       'bid-groups.auction-items.donation',
       'bid-groups.auction-items.donation.donation-donors',
       'bid-groups.auction-items.donation.donation-donors.donor',

@@ -23,7 +23,6 @@ export default DS.Model.extend({
   uniqueDonationCategories: [],
 
   setUniqueDonationCategories: Ember.on('init', Ember.observer('auctionItems.@each.donation.donationCategory', function() {
-    console.log('setUniqueDonationCategories');
     this.set('uniqueDonationCategories', []);
     this.get('auctionItems').then((auctionItems) => {
       Ember.RSVP.all(auctionItems.mapBy('donation')).then((donations) => {
