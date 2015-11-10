@@ -19,6 +19,26 @@ h3.organization-name {
   font-size: 62.5%;
   margin: 20px 40px 20px 40px;
 
+  .auction-program-cover {
+    padding-top: 200px;
+    text-align: center;
+    page-break-after: always;
+    h1.auction-program-cover-title {
+      font-size: 3em;
+    }
+    h2.auction-program-cover-organization {
+      font-size: 2em;
+    }
+    .auction-program-cover-location {
+      margin-top: 20px;
+      margin-bottom: 40px;
+      font-size: 1.5em;
+    }
+    .auction-program-cover-date {
+      font-size: 2em;
+    }
+  }
+
   .auction-program-bid-group {
     margin-top: 50px;
     .auction-program-bid-group-name {

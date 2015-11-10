@@ -1,5 +1,18 @@
 <div class="auction-program">
 
+  {{#if showCover}}
+    <div class="auction-program-cover">
+      <h1 class="auction-program-cover-title">{{model.name}}</h1>
+      <h2 class="auction-program-cover-organization">{{model.organization.name}}</h2>
+      <div class="auction-program-cover-location">
+        {{format-newlines model.physicalAddress}}
+      </div>
+      <div class="auction-program-cover-date">
+        {{moment-format model.startsAt 'MMMM Do, YYYY \at h:mma' timeZone=model.timeZoneId}}
+      </div>
+    </div>
+  {{/if}}
+
   <div class="auction-program-bid-groups">
     {{#each model.sortedBidGroups as |bidGroup|}}
       <div class="auction-program-bid-group">
