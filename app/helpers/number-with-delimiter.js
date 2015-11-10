@@ -1,34 +1,36 @@
 import Ember from 'ember';
 
 export function numberWithDelimiter(params/*, hash*/) {
-  const number = params[0].toString();
-  var e = 0;
-  const parts = [];
-  var quit = false;
-  
-  do {
-    let arg1 = e - 3;
-    let arg2;
-    if (e < 0) { arg2 = e; }
+  if (params[0]) {
+    const number = params[0].toString();
+    var e = 0;
+    const parts = [];
+    var quit = false;
 
-    let nextPart = "";
+    do {
+      let arg1 = e - 3;
+      let arg2;
+      if (e < 0) { arg2 = e; }
 
-    if (!arg2) {
-      nextPart = number.slice(arg1);
-    } else {
-      nextPart = number.slice(arg1, arg2);
-    }
+      let nextPart = "";
 
-    if (nextPart.length > 0) {
-      parts.unshift(nextPart);
-      e = e - 3;
-    } else if (nextPart.length === 0) {
-      quit = true;
-    }
+      if (!arg2) {
+        nextPart = number.slice(arg1);
+      } else {
+        nextPart = number.slice(arg1, arg2);
+      }
 
-  } while (!quit);
+      if (nextPart.length > 0) {
+        parts.unshift(nextPart);
+        e = e - 3;
+      } else if (nextPart.length === 0) {
+        quit = true;
+      }
 
-  return parts.join(",");
+    } while (!quit);
+
+    return parts.join(",");
+  }
 }
 
 export default Ember.Helper.helper(numberWithDelimiter);

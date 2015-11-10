@@ -16,19 +16,18 @@
   <div class="auction-program-bid-groups">
     {{#each model.sortedBidGroups as |bidGroup|}}
       <div class="auction-program-bid-group">
-        <h2 class="auction-program-bid-group-name">
-          {{bidGroup.name}}
-        </h2>
-        <div class="auction-program-bid-group-description">
-          {{format-newlines-into-paragraphs bidGroup.description}}
+        <div class="auction-program-bid-group-preface">
+          <h2 class="auction-program-bid-group-name">
+            {{bidGroup.name}}
+          </h2>
+          <div class="auction-program-bid-group-description">
+            {{format-newlines-into-paragraphs bidGroup.description}}
+          </div>
         </div>
 
         {{#if bidGroup.groupByDonationCategory}}
           {{#each bidGroup.uniqueDonationCategories as |donationCategory|}}
             <div class="auction-program-bid-group-donation-category">
-              <h3 class="auction-program-bid-group-donation-category-name">
-                {{donationCategory.name}}
-              </h3>
               {{auction-program-auction-items auctionItems=bidGroup.auctionItems donationCategory=donationCategory}}
             </div>
           {{/each}}

@@ -7,6 +7,16 @@ export default Ember.Component.extend({
 
   matchingAuctionItems: [],
 
+  firstMatchingAuctionItem: Ember.computed('matchingAuctionItems', 'matchingAuctionItems.[]', function() {
+    return this.get('matchingAuctionItems').get('firstObject');
+  }),
+
+  otherMatchingAuctionItems: Ember.computed('matchingAuctionItems.[]', function() {
+    return this.get('matchingAuctionItems').filter((auctionItem, index) => {
+      return index > 0;
+    });
+  }),
+
   setMatchingAuctionItems: Ember.on('init', Ember.observer('auctionItems.@each.donation.donationCategory.content', 'donationCategory.content', function() {
     if (this.get('donationCategory')) {
       this.set('matchingAuctionItems', []);

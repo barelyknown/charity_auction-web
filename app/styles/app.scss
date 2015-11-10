@@ -41,6 +41,10 @@ h3.organization-name {
 
   .auction-program-bid-group {
     margin-top: 50px;
+
+    .auction-program-bid-group-preface {
+      page-break-inside: avoid;
+    }
     .auction-program-bid-group-name {
       text-align: center;
       font-size: 2em;
@@ -48,7 +52,7 @@ h3.organization-name {
     .auction-program-bid-group-description {
       font-size: 1.2em;
     }
-    .auction-program-bid-group-donation-category {
+    .auction-program-bid-group-auction-first-item {
       page-break-inside: avoid;
     }
     .auction-program-bid-group-donation-category-name {

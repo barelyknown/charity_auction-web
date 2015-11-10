@@ -1,0 +1,46 @@
+<div class="auction-program-bid-group-auction-item">
+  <table class="auction-program-bid-group-auction-item-summary">
+    <tbody>
+      <tr>
+        <th class="auction-program-bid-group-auction-item-number">#{{auctionItem.number}}</th>
+        <th class="auction-program-bid-group-auction-item-donation-title">{{auctionItem.donation.title}}</th>
+        <th class="auction-program-bid-group-auction-item-donation-estimated-value">
+          <span class="auction-program-bid-group-auction-item-donation-estimated-label">
+            {{#if (eq auctionItem.bidType.name 'fixed-price')}}
+              set price per
+            {{else}}
+              estimated value
+            {{/if}}
+          </span>
+          <span class="auction-program-bid-group-auction-item-donation-estimated-value-amount">
+            {{#if (eq auctionItem.bidType.name 'fixed-price')}}
+              ${{number-with-delimiter auctionItem.minimumBidAmount}}
+            {{else}}
+              ${{number-with-delimiter auctionItem.donation.estimatedValueAmount}}
+            {{/if}}
+          </span>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <div class="auction-program-bid-group-auction-item-detail">
+    <div class="auction-program-bid-group-auction-item-detail-header">
+      <div class="auction-program-bid-group-auction-item-donation-detail-donor">
+        {{join-donation-donors donation=auctionItem.donation}}
+      </div>
+      <div class="auction-program-bid-group-auction-item-minimum-bid-amount">
+        {{#if (and auctionItem.minimumBidAmount (not (eq auctionItem.bidType.name 'teacup')) (not (eq auctionItem.bidType.name 'fixed-price')))}}
+          <span class="auction-program-bid-group-auction-item-minimum-bid-amount-label">
+            minimum bid
+          </span>
+          ${{auctionItem.minimumBidAmount}}
+        {{else}}
+          &nbsp;
+        {{/if}}
+      </div>
+    </div>
+    <div class="auction-program-bid-group-donation-detail-description">
+      {{format-newlines-into-paragraphs auctionItem.donation.description}}
+    </div>
+  </div>
+</div>
