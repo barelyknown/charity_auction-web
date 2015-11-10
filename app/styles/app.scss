@@ -16,21 +16,29 @@ h3.organization-name {
 
 .auction-program {
   font-family: sans-serif;
+  font-size: 62.5%;
   margin: 20px 40px 20px 40px;
 
   .auction-program-bid-group {
     margin-top: 50px;
     .auction-program-bid-group-name {
       text-align: center;
+      font-size: 2em;
     }
     .auction-program-bid-group-description {
       font-size: 1.2em;
     }
     .auction-program-bid-group-donation-category {
       text-align: center;
-      font-size: 1.4em;
+      font-size: 1.6em;
       text-decoration: underline;
+      margin-top: 40px;
     }
+  }
+
+  .auction-program-bid-group-auction-item {
+    margin-top: 20px;
+    page-break-inside: avoid;
   }
 
   .auction-program-bid-group-auction-item-detail-header {
@@ -55,13 +63,14 @@ h3.organization-name {
     }
     th.auction-program-bid-group-auction-item-donation-estimated-value {
       text-align: right;
+      font-size: 1.4em;
       .auction-program-bid-group-auction-item-donation-estimated-label {
         @extend .bid-amount-tip-label;
       }
     }
     th.auction-program-bid-group-auction-item-donation-title {
       text-align: left;
-      font-size: 1em;
+      font-size: 1.5em;
     }
   }
 }
