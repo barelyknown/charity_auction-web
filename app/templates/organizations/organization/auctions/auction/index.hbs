@@ -133,7 +133,7 @@
           {{#if auctionItem.id}}
             <li>
               {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.edit' auctionItem}}
-                {{auctionItem.donation.title}}
+                #{{auctionItem.number}} {{auctionItem.donation.title}}
               {{/link-to}}
             </li>
           {{/if}}
