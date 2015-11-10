@@ -12,10 +12,12 @@
 
         {{#if bidGroup.groupByDonationCategory}}
           {{#each bidGroup.uniqueDonationCategories as |donationCategory|}}
-            <h3 class="auction-program-bid-group-donation-category">
-              {{donationCategory.name}}
-            </h3>
-            {{auction-program-auction-items auctionItems=bidGroup.auctionItems donationCategory=donationCategory}}
+            <div class="auction-program-bid-group-donation-category">
+              <h3 class="auction-program-bid-group-donation-category-name">
+                {{donationCategory.name}}
+              </h3>
+              {{auction-program-auction-items auctionItems=bidGroup.auctionItems donationCategory=donationCategory}}
+            </div>
           {{/each}}
 
         {{else}}

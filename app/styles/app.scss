@@ -29,6 +29,9 @@ h3.organization-name {
       font-size: 1.2em;
     }
     .auction-program-bid-group-donation-category {
+      page-break-inside: avoid;
+    }
+    .auction-program-bid-group-donation-category-name {
       text-align: center;
       font-size: 1.6em;
       text-decoration: underline;
