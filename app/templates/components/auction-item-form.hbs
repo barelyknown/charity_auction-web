@@ -1,4 +1,9 @@
 <div>
+  <label>Number</label>
+  {{input value=auctionItem.number}}
+</div>
+
+<div>
   <label>Donation</label>
   <select onchange={{action 'setDonation' value='target.value'}}>
     <option value=''>Select a donation</option>
