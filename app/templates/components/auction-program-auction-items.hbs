@@ -15,7 +15,11 @@
                 {{/if}}
               </span>
               <span class="auction-program-bid-group-auction-item-donation-estimated-value-amount">
-                ${{number-with-delimiter auctionItem.donation.estimatedValueAmount}}
+                {{#if (eq auctionItem.bidType.name 'fixed-price')}}
+                  ${{number-with-delimiter auctionItem.minimumBidAmount}}
+                {{else}}
+                  ${{number-with-delimiter auctionItem.donation.estimatedValueAmount}}
+                {{/if}}
               </span>
             </th>
           </tr>
