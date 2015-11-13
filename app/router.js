@@ -84,6 +84,7 @@ Router.map(function() {
     });
   });
   this.route('bidder-checkout', { path: 'bidder-checkout/:bidder_id' });
+  this.route('cashier-summary', { path: 'cashier-summary/:bidder_id' });
 });
 
 export default Router;

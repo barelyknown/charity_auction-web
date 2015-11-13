@@ -106,6 +106,7 @@ h3.organization-name {
 .bidder-checkout {
   font-family: sans-serif;
   font-size: 62.5%;
+  margin: 20px 40px 20px 40px;
 
   h1 {
     font-size: 2em;
@@ -176,6 +177,38 @@ h3.organization-name {
       }
       .bidder-checkout-bid-auction-item-donors-donor-phone {
       }
+    }
+  }
+}
+
+
+.cashier-summary {
+  font-family: sans-serif;
+  font-size: 62.5%;
+  margin: 20px 40px 20px 40px;
+  table.cashier-summary-header {
+    td.cashier-summary-header-bidder-number, td.cashier-summary-header-bidder-name {
+      font-weight: bold;
+    }
+  }
+  table.cashier-summary-details {
+    width: 100%;
+    td.cashier-summary-details-bid-amount {
+      text-align: right;
+    }
+  }
+  table.cashier-summary-total {
+    width: 100%;
+    font-size: 1.2em;
+    td.cashier-summary-total-amount-label, .cashier-summary-total-balance-label {
+      text-align: right;
+    }
+    td.cashier-summary-total-balance, td.cashier-summary-total-amount {
+      text-align: right;
+    }
+    td.cashier-summary-total-balance {
+      width: 100px;
+      font-weight: bold;
     }
   }
 }

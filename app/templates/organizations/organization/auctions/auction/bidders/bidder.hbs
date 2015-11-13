@@ -4,13 +4,20 @@
   {{format-bidder-name bidder=model}}
 {{/link-to}}
 
-<div>
-  {{#link-to 'organizations.organization.auctions.auction.bidders.bidder.edit' model}}
-    Edit
-  {{/link-to}}
-  {{#link-to 'bidder-checkout' model}}
-    Checkout
-  {{/link-to}}
-</div>
+<ul>
+  <li>
+    {{#link-to 'organizations.organization.auctions.auction.bidders.bidder.edit' model}}
+      Edit
+    {{/link-to}}
+  </li>
+  <li>
+    {{#link-to 'bidder-checkout' model}}
+      Bidder Checkout
+    {{/link-to}}
+  </li>
+  <li>
+    {{link-to 'Cashier Summary' 'cashier-summary' model}}
+  </li>
+</ul>
 
 {{outlet}}
