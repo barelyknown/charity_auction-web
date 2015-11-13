@@ -64,6 +64,7 @@ Router.map(function() {
             this.route('bidder', { path: ':bidder_id' }, function() {
               this.route('edit', {});
             });
+            this.route('new', {});
           });
         });
       });

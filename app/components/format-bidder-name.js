@@ -7,11 +7,11 @@ export default Ember.Component.extend({
 
   formattedUserNames: null,
 
-  setFormattedUserName: Ember.on('init', function() {
+  setFormattedUserName: Ember.on('init', Ember.observer('bidder.tickets.[]', function() {
     this.get('bidder.tickets').then((tickets) => {
       Ember.RSVP.all(tickets.mapBy('user')).then((users) => {
         this.set('formattedUserNames', users.mapBy('name').join(' and '));
       })
     })
-  })
+  }))
 });

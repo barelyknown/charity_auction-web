@@ -7,25 +7,22 @@ export default Ember.Component.extend({
     });
   }),
 
+  saveAction: 'saveBidder',
+
   actions: {
     removeTicket(ticket) {
-      this.get('bidder.tickets').then((tickets) => {
-        tickets.removeObject(ticket);
-        this.get('bidder').save();
-      });
+      this.get('bidder.tickets').removeObject(ticket);
     },
 
     addTicket(ticketId) {
       const ticket = this.get('unassignedTickets').find((ticket) => {
         return ticketId === ticket.get('id');
       });
-      console.log(ticketId);
       this.get('bidder.tickets').pushObject(ticket);
-      this.get('bidder').save();
     },
 
     save(bidder) {
-      bidder.save();
+      this.sendAction('saveAction', bidder);
     }
   }
 });

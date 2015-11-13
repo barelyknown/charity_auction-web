@@ -1,13 +1,6 @@
 <div class="">
   <label for="">Number</label>
   {{input value=bidder.number}}
-  <button {{action 'save' bidder}} disabled={{bidder.isSaving}}>
-    {{#if bidder.isSaving}}
-      Saving...
-    {{else}}
-      Save
-    {{/if}}
-  </button>
 </div>
 
 Tickets:
@@ -27,3 +20,11 @@ Tickets:
     </li>
   {{/each}}
 </ul>
+
+<button {{action 'save' bidder}} disabled={{bidder.isSaving}}>
+  {{#if bidder.isSaving}}
+    Saving...
+  {{else}}
+    Update Number
+  {{/if}}
+</button>
