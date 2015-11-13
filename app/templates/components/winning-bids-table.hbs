@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Auction Item</th>
+      <th>Amount</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each winningBids as |bid|}}
+      <tr>
+        <td>
+          {{bid.auctionItem.donation.title}}
+        </td>
+        <td>
+          {{bid.amount}}
+        </td>
+        <td>
+          {{bid.balance}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

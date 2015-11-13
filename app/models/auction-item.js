@@ -8,6 +8,7 @@ export default DS.Model.extend({
   bidGroup: DS.belongsTo('bid-group'),
   minimumBidAmount: DS.attr('number'),
   number: DS.attr('string'),
+  bids: DS.hasMany('bid'),
 
   isAuctionValid: Ember.computed.notEmpty('auction.content'),
   isDonationValid: Ember.computed.notEmpty('donation.content'),

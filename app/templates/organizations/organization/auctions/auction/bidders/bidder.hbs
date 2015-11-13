@@ -1,0 +1,16 @@
+<h4>Bidder</h4>
+
+{{#link-to 'organizations.organization.auctions.auction.bidders.bidder' model}}
+  {{format-bidder-name bidder=model}}
+{{/link-to}}
+
+<div>
+  {{#link-to 'organizations.organization.auctions.auction.bidders.bidder.edit' model}}
+    Edit
+  {{/link-to}}
+  {{#link-to 'bidder-checkout' model}}
+    Checkout
+  {{/link-to}}
+</div>
+
+{{outlet}}

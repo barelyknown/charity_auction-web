@@ -1,0 +1,10 @@
+<div class="">
+  <b>Auction Item</b>
+</div>
+<div>
+  {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item'}}
+    {{model.number}} - {{model.donation.title}}
+  {{/link-to}}
+</div>
+
+{{outlet}}

@@ -48,6 +48,21 @@ Router.map(function() {
 
             this.route('auction-item', { path: ':auction_item_id' }, function() {
               this.route('edit', {});
+
+              this.route('bids', {}, function() {
+                this.route('new', {});
+                this.route('bid', { path: ':bid_id' });
+              });
+            });
+          });
+          this.route('payments', {}, function() {
+            this.route('new', {});
+            this.route('payment', { path: ':payment_id' }, function() {});
+          });
+
+          this.route('bidders', {}, function() {
+            this.route('bidder', { path: ':bidder_id' }, function() {
+              this.route('edit', {});
             });
           });
         });
@@ -68,6 +83,7 @@ Router.map(function() {
       this.route('edit', {});
     });
   });
+  this.route('bidder-checkout', { path: 'bidder-checkout/:bidder_id' });
 });
 
 export default Router;

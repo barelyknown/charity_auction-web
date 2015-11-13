@@ -1,0 +1,85 @@
+<div class="bidder-checkout">
+  <table class='bidder-checkout-header'>
+    <tbody>
+      <td class='bidder-checkout-header-number'>
+        #{{model.number}}
+      </td>
+      <td>
+        {{format-bidder-name bidder=model}}
+      </td>
+    </tbody>
+  </table>
+
+  <h2>Winning Bids</h2>
+
+  <table class='bidder-checkout-bids'>
+    <tbody>
+      {{#each model.bids as |bid|}}
+        {{#if bid.winner}}
+          <tr class='bidder-checkout-bid-auction-item'>
+            <td class='bidder-checkout-bid-auction-item-number'>
+              {{bid.auctionItem.number}}
+            </td>
+            <td class='bidder-checkout-bid-auction-item-donation'>
+              <div class='bidder-checkout-bid-auction-item-donation-title'>
+                {{bid.auctionItem.donation.title}}
+              </div>
+              <div class='bidder-checkout-bid-auction-item-donation-description'>
+                {{bid.auctionItem.donation.description}}
+              </div>
+              <table class='bidder-checkout-bid-auction-item-donors'>
+                <tbody>
+                  <tr>
+                    <td class='bidder-checkout-bid-auction-item-donors-label'>
+                      Donor{{if (gt bid.auctionItem.donation.donationDonors.length 1) 's'}}
+                    </td>
+                    <td class='bidder-checkout-bid-auction-item-donors'>
+                      {{#each bid.auctionItem.donation.donationDonors as |donationDonor|}}
+                        <div class="bidder-checkout-bid-auction-item-donors-donor">
+                          <div class="bidder-checkout-bid-auction-item-donors-donor-name-and-phone">
+                            <span class="bidder-checkout-bid-auction-item-donors-donor-name">
+                              {{donationDonor.donor.user.name}}
+                            </span>
+                            <span class="bidder-checkout-bid-auction-item-donors-donor-phone">
+                              {{donationDonor.donor.user.mobilePhoneNumber}}
+                              &nbsp;
+                            </span>
+                          </div>
+                          {{format-newlines donationDonor.donor.user.physicalAddress}}
+                        </div>
+                      {{/each}}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class='bidder-checkout-bid-auction-item-amount'>
+              ${{number-with-delimiter bid.amount}}
+            </td>
+          </tr>
+        {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
+
+  <table class='bidder-checkout-total'>
+    <tbody>
+      <tr class='bidder-checkout-total-amount'>
+        <td class='bidder-checkout-total-label'>
+          Total
+        </td>
+        <td class='bidder-checkout-total-amount-value'>
+          ${{number-with-delimiter totalBidAmount}}
+        </td>
+      </tr>
+      <tr class='bidder-checkout-total-balance'>
+        <td class='bidder-checkout-total-label'>
+          Balance Due
+        </td>
+        <td class='bidder-checkout-total-balance-value'>
+          ${{number-with-delimiter totalBidBalance}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

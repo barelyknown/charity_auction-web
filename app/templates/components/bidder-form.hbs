@@ -1,0 +1,29 @@
+<div class="">
+  <label for="">Number</label>
+  {{input value=bidder.number}}
+  <button {{action 'save' bidder}} disabled={{bidder.isSaving}}>
+    {{#if bidder.isSaving}}
+      Saving...
+    {{else}}
+      Save
+    {{/if}}
+  </button>
+</div>
+
+Tickets:
+<select onchange={{action 'addTicket' value='target.value'}}>
+  <option>Add a ticket to the bidder</option>
+  {{#each unassignedTickets as |ticket|}}
+    <option value={{ticket.id}}>{{ticket.user.name}}</option>
+  {{/each}}
+</select>
+<ul>
+  {{#each bidder.tickets as |ticket|}}
+    <li>
+      {{ticket.user.name}}
+      <button {{action 'removeTicket' ticket}}>
+        remove
+      </button>
+    </li>
+  {{/each}}
+</ul>

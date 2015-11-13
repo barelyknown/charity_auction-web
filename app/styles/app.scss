@@ -101,3 +101,81 @@ h3.organization-name {
     }
   }
 }
+
+
+.bidder-checkout {
+  font-family: sans-serif;
+  font-size: 62.5%;
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .bidder-checkout-header {
+    font-size: 1.8em;
+    td.bidder-checkout-header-number {
+      width: 100px;
+    }
+  }
+
+  table.bidder-checkout-total {
+    width: 100%;
+    font-size: 2em;
+    td.bidder-checkout-total-label {
+      text-align: right;
+    }
+    tr.bidder-checkout-total-balance {
+      font-weight: bold
+    }
+    .bidder-checkout-total-amount, .bidder-checkout-total-balance {
+      width: 100px;
+      text-align: right;
+    }
+  }
+
+  table.bidder-checkout-bids {
+    td.bidder-checkout-bid-auction-item {
+      page-break-inside: avoid;
+    }
+    td.bidder-checkout-bid-auction-item-number {
+      vertical-align: top;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .bidder-checkout-bid-auction-item-donation-title {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .bidder-checkout-bid-auction-item-donation-description {
+      font-style: italic;
+    }
+    .bidder-checkout-bid-auction-item-amount {
+      vertical-align: top;
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: right;
+    }
+    .bidder-checkout-bid-auction-item-donors {
+      width: 100%;
+      .bidder-checkout-bid-auction-item-donors-donor {
+        margin-bottom: 10px;
+      }
+      .bidder-checkout-bid-auction-item-donors-label {
+        vertical-align: top;
+        width: 50px;
+      }
+      .bidder-checkout-bid-auction-item-donors-donor-name-and-phone {
+        clear: both;
+      }
+      .bidder-checkout-bid-auction-item-donors-label {
+        font-weight: bold;
+        padding-right: 20px;
+      }
+      .bidder-checkout-bid-auction-item-donors-donor-name {
+        margin-right: 10px;
+      }
+      .bidder-checkout-bid-auction-item-donors-donor-phone {
+      }
+    }
+  }
+}

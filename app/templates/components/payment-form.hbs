@@ -1,0 +1,30 @@
+<h5>Payment Form</h5>
+
+<div class="">
+  <label for="">Bidder</label>
+  <select onchange={{action 'setBidder' value='target.value'}}>
+    <option value=''>Select a bidder</option>
+    {{#each payment.auction.bidders as |bidder|}}
+      <option value={{bidder.id}} selected={{eq bidder.id payment.bidder.id}}>{{format-bidder-name bidder=bidder}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="">
+  <label for="">Amount</label>
+  {{input value=payment.amount type='number'}}
+</div>
+
+<div class="">
+  <label for="">Payment Method</label>
+  <select onchange={{action (mut payment.paymentMethod) value='target.value'}}>
+    <option value=''>Select a payment method</option>
+    {{#each paymentMethods as |paymentMethod|}}
+      <option value={{paymentMethod}}>{{paymentMethod}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<button {{action 'save'}}>
+  Save
+</button>

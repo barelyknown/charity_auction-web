@@ -1,11 +1,17 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  tagName: 'span',
+
   bidder: null,
 
-  formattedUserNames: Ember.computed('bidder.tickets.@each.user.name', function() {
-    const names = this.get('bidder.tickets').mapBy('user.name');
+  formattedUserNames: null,
 
-    return names.join(" and ");
+  setFormattedUserName: Ember.on('init', function() {
+    this.get('bidder.tickets').then((tickets) => {
+      Ember.RSVP.all(tickets.mapBy('user')).then((users) => {
+        this.set('formattedUserNames', users.mapBy('name').join(' and '));
+      })
+    })
   })
 });

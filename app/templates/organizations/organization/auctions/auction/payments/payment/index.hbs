@@ -1,0 +1,9 @@
+<h6>Winning Bids</h6>
+
+{{winning-bids-table winningBids=model.bidder.winningBids}}
+
+{{#if (gt model.unappliedAmount 0)}}
+  <button {{action 'applyPaymentToBids'}}>
+    Apply Payment to Bids
+  </button>
+{{/if}}

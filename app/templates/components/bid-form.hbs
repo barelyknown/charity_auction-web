@@ -1,0 +1,23 @@
+<div class="">
+  <label for="">Bidder</label>
+  <select onchange={{action 'setBidder' value='target.value'}} >
+    <option value=''>Select bidder</option>
+    {{#each bid.auctionItem.auction.bidders as |bidder|}}
+      <option value={{bidder.id}}>{{format-bidder-name bidder=bidder}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="">
+  <label for="">Amount</label>
+  {{input type='number' value=bid.amount}}
+</div>
+
+<div class="">
+  <label for="">Winner</label>
+  {{input type='checkbox' checked=bid.winner}}
+</div>
+
+<button {{action 'save' bid}}>
+  Save Bid
+</button>

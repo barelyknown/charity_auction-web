@@ -100,7 +100,9 @@
 <ul>
   {{#each model.bidders as |bidder|}}
     <li>
-      {{format-bidder-name bidder=bidder}}
+      {{#link-to 'organizations.organization.auctions.auction.bidders.bidder' bidder}}
+        {{format-bidder-name bidder=bidder}}
+      {{/link-to}}
     </li>
   {{/each}}
 </ul>
@@ -132,7 +134,7 @@
         {{#each bidGroup.auctionItems as |auctionItem|}}
           {{#if auctionItem.id}}
             <li>
-              {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.edit' auctionItem}}
+              {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item' auctionItem}}
                 #{{auctionItem.number}} {{auctionItem.donation.title}}
               {{/link-to}}
             </li>
@@ -142,5 +144,8 @@
     </li>
   {{/each}}
 </ul>
+
+<h5>Payments</h5>
+{{link-to 'New Payment' 'organizations.organization.auctions.auction.payments.new'}}
 
 {{outlet}}

@@ -1,0 +1,36 @@
+<dl>
+  <dt>Number</dt>
+  <dd>{{model.number}}</dd>
+</dl>
+
+<h5>Winning Bids</h5>
+{{winning-bids-table winningBids=model.winningBids}}
+
+<h5>Payments</h5>
+{{link-to 'New' 'organizations.organization.auctions.auction.payments.new' (query-params bidderId=model.id)}}
+<table>
+  <thead>
+    <tr>
+      <th>
+        Amount
+      </th>
+      <th>
+        Unapplied
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.payments as |payment|}}
+      <tr>
+        <td>
+          {{#link-to 'organizations.organization.auctions.auction.payments.payment' payment}}
+            {{payment.amount}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{payment.unappliedAmount}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
