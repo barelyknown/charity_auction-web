@@ -23,6 +23,8 @@ export default DS.Model.extend({
 
   tickets: DS.hasMany('ticket'),
 
+  payments: DS.hasMany('payment'),
+
   bidders: DS.hasMany('bidder'),
 
   bidGroups: DS.hasMany('bid-group'),
@@ -30,4 +32,5 @@ export default DS.Model.extend({
   sortBidGroupsBy: ['sequence:asc'],
 
   sortedBidGroups: Ember.computed.sort('bidGroups.content','sortBidGroupsBy')
+
 });

@@ -1,0 +1,8 @@
+{{#each sortedBidders as |bidder|}}
+
+  {{#if bidder.totalWinningAmount}}
+    {{bidder-checkout-page model=bidder}}
+    {{cashier-summary-page model=bidder}}
+  {{/if}}
+
+{{/each}}

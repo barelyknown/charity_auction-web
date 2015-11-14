@@ -5,16 +5,29 @@
   <dd>{{model.bidGroup.name}} ({{model.bidType.name}})</dd>
 
   <dt>Minimum Bid Amount</dt>
-  <dd>{{model.minimumBidAmount}}</dd>
+  <dd>
+    {{#if model.minimumBidAmount}}
+      {{model.minimumBidAmount}}
+    {{else}}
+      &nbsp;
+    {{/if}}
+  </dd>
 </dl>
 
-<h4>Bids</h4>
-{{link-to 'New' 'organizations.organization.auctions.auction.auction-items.auction-item.bids.new'}}
+<div class="">
+  <h4>Bids</h4>
+  {{link-to 'New Bid' 'organizations.organization.auctions.auction.auction-items.auction-item.bids.new'}}
 
-<ul>
-  {{#each model.bids as |bid|}}
-    {{#if bid.id}}
-      <li>{{bid.id}} {{bid.amount}} {{format-bidder-name bidder=bid.bidder}} {{if bid.winner 'winner'}}</li>
-    {{/if}}
-  {{/each}}
-</ul>
+  <ul>
+    {{#each model.bids as |bid|}}
+      {{#if bid.id}}
+        <li>
+          {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.bids.bid' bid}}
+            {{format-bidder-name bidder=bid.bidder}} {{if bid.winner '(winner)'}}
+          {{/link-to}}
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+
+</div>

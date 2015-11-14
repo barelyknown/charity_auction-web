@@ -6,11 +6,14 @@
 <h5>Winning Bids</h5>
 {{winning-bids-table winningBids=model.winningBids}}
 
+{{link-to 'New Payment for Remaining Balance' 'organizations.organization.auctions.auction.payments.new' (query-params bidderId=model.id amount=model.totalBalance)}}
 <h5>Payments</h5>
-{{link-to 'New' 'organizations.organization.auctions.auction.payments.new' (query-params bidderId=model.id)}}
 <table>
   <thead>
     <tr>
+      <th>
+        Payment ID
+      </th>
       <th>
         Amount
       </th>
@@ -24,8 +27,11 @@
       <tr>
         <td>
           {{#link-to 'organizations.organization.auctions.auction.payments.payment' payment}}
-            {{payment.amount}}
+            {{payment.id}}
           {{/link-to}}
+        </td>
+        <td class="currency">
+          {{payment.amount}}
         </td>
         <td>
           {{payment.unappliedAmount}}

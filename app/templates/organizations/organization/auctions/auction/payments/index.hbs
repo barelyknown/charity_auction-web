@@ -1,0 +1,40 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        Bidder
+      </th>
+      <th>
+        Amount
+      </th>
+      <th>
+        Payment Method
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |payment|}}
+      <tr>
+        <td>
+          {{#link-to 'organizations.organization.auctions.auction.payments.payment' payment}}
+            {{payment.id}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{#if payment.bidder}}
+            {{format-bidder-name bidder=payment.bidder}}
+          {{/if}}
+        </td>
+        <td>
+          {{payment.amount}}
+        </td>
+        <td>
+          {{payment.paymentMethod}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+{{#link-to 'organizations.organization.auctions.auction.tickets.new'}}
+  New Ticket
+{{/link-to}}
+
+<table>
+  <thead>
+    <tr>
+      <th>
+        Number
+      </th>
+      <th>
+        Person
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedTickets as |ticket|}}
+      <tr>
+        <td>
+          {{#link-to 'organizations.organization.auctions.auction.tickets.ticket' ticket}}
+            {{ticket.number}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{ticket.user.name}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,82 @@
+<div class="cashier-summary">
+  <table class='cashier-summary-header'>
+    <tbody>
+      <td class='cashier-summary-header-number'>
+        #{{model.number}}
+      </td>
+      <td>
+        {{format-bidder-name bidder=model}}
+      </td>
+    </tbody>
+  </table>
+
+  <h2>Cashier Summary - {{model.auction.name}}</h2>
+
+  <table class='cashier-summary-details'>
+    <tbody>
+      {{#each model.bids as |bid|}}
+        {{#if bid.winner}}
+          <tr>
+            <td>
+              {{bid.auctionItem.number}}
+            </td>
+            <td>
+              {{bid.auctionItem.donation.title}}
+            </td>
+            <td class='cashier-summary-details-bid-amount'>
+              ${{number-with-delimiter bid.amount}}
+            </td>
+          </tr>
+        {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
+
+  <table class='cashier-summary-total'>
+    <tbody>
+      <tr>
+        <td class='cashier-summary-total-amount-label'>
+          Total
+        </td>
+        <td class='cashier-summary-total-amount'>
+          ${{number-with-delimiter totalBidAmount}}
+        </td>
+      </tr>
+      <tr>
+        <td class='cashier-summary-total-amount-label'>
+          Balance
+        </td>
+        <td class='cashier-summary-total-balance'>
+          {{#if totalBidBalance}}
+            ${{number-with-delimiter totalBidBalance}}
+          {{else}}
+            Paid in full
+          {{/if}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="cashier-summary-payments">
+    <thead>
+      <tr>
+        <th>
+          Payment Method
+        </th>
+        <th>
+          Amount
+        </th>
+      </tr>
+      {{#each model.payments as |payment|}}
+        <tr>
+          <td>
+            {{payment.paymentMethod}}
+          </td>
+          <td class="payment-amount">
+            ${{number-with-delimiter payment.amount}}
+          </td>
+        </tr>
+      {{/each}}
+    </thead>
+  </table>
+</div>

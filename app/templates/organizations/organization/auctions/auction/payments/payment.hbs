@@ -1,12 +1,17 @@
-Payment {{model.id}}, {{model.amount}} ({{model.paymentMethod}})
+<h4>
+  {{#link-to 'organizations.organization.auctions.auction.payments.payment' model}}
+    Payment
+  {{/link-to}}
+</h4>
+
+{{#link-to 'organizations.organization.auctions.auction.payments.payment.edit'}}
+  Edit
+{{/link-to}}
+
 {{#if model.bidder}}
   {{#link-to 'organizations.organization.auctions.auction.bidders.bidder' model.bidder}}
     {{format-bidder-name bidder=model.bidder}}
   {{/link-to}}
-{{/if}}
-
-{{#if (gt model.unappliedAmount 0)}}
-  Unapplied: {{model.unappliedAmount}}
 {{/if}}
 
 {{outlet}}

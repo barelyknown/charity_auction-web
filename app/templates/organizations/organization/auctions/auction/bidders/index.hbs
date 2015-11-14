@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        Number
+      </th>
+      <th>
+        People
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedBidders as |bidder|}}
+      <tr>
+        <td class="top">
+          {{#link-to 'organizations.organization.auctions.auction.bidders.bidder' bidder}}
+            {{bidder.number}}
+          {{/link-to}}
+        </td>
+        <td>
+          <ul class="unstyled">
+            {{#each bidder.tickets as |ticket|}}
+              <li>
+                {{ticket.user.name}}
+              </li>
+            {{/each}}
+          </ul>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

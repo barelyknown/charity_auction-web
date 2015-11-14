@@ -1,9 +1,79 @@
-<h6>Winning Bids</h6>
+<dl class="">
+  <dt>ID</dt>
+  <dd>{{model.id}}</dd>
 
-{{winning-bids-table winningBids=model.bidder.winningBids}}
+  <dt>Amount</dt>
+  <dd>${{model.amount}}</dd>
 
-{{#if (gt model.unappliedAmount 0)}}
-  <button {{action 'applyPaymentToBids'}}>
-    Apply Payment to Bids
+  <dt>Payment Method</dt>
+  <dd>{{model.paymentMethod}}</dd>
+
+  <dt>Unapplied Amount</dt>
+  <dd>
+    ${{number-with-delimiter model.unappliedAmount}}
+  </dd>
+</dl>
+
+{{#if model.bidder}}
+  <h5>Winning Bids</h5>
+
+  {{winning-bids-table winningBids=model.bidder.winningBids}}
+
+  {{#if (gt model.unappliedAmount 0)}}
+    <button {{action 'applyPaymentToBids'}}>
+      Apply Payment to Bids
+    </button>
+  {{/if}}
+
+{{else}}
+
+  <h5>Winning Raffle Bids</h5>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          ID
+        </th>
+        <th>
+          Auction Item
+        </th>
+        <th>
+          Amount
+        </th>
+        <th>
+          Balance
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each raffleBids as |bid|}}
+        {{#if bid.winner}}
+          <tr>
+            <td>
+              {{bid.id}}
+            </td>
+            <td>
+              {{bid.auctionItem.number}}
+              {{bid.auctionItem.donation.title}}
+            </td>
+            <td>
+              ${{number-with-delimiter bid.amount}}
+            </td>
+            <td>
+              {{#if bid.balance}}
+                ${{number-with-delimiter bid.balance}}
+              {{else}}
+                $0
+              {{/if}}
+            </td>
+          </tr>
+        {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
+
+  <button {{action 'applyPaymentToRaffleBids'}}>
+    Apply Payment to Raffle Bids
   </button>
 {{/if}}

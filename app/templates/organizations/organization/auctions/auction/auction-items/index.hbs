@@ -1,0 +1,61 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Donation
+      </th>
+      <th>
+        Bid Group
+      </th>
+      <th>
+        Amount
+      </th>
+      <th>
+        Balance
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each sortedAuctionItems as |auctionItem|}}
+      <tr>
+        <td>
+          {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item' auctionItem}}
+            {{auctionItem.number}}
+          {{/link-to}}
+        </td>
+        <td>
+          {{auctionItem.donation.title}}
+        </td>
+        <td>
+          {{auctionItem.bidGroup.name}}
+        </td>
+        <td class="money">
+          {{#if auctionItem.winningBidAmount}}
+            ${{number-with-delimiter auctionItem.winningBidAmount}}
+          {{/if}}
+        </td>
+        <td class="money">
+          {{#if auctionItem.winningBidBalance}}
+            ${{number-with-delimiter auctionItem.winningBidBalance}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+    <tr>
+      <td colspan=3></td>
+      <td class="money">
+        ${{number-with-delimiter totalAmount}}
+      </td>
+      <td class="money">
+        {{#if totalBalance}}
+          ${{number-with-delimiter totalBalance}}
+        {{else}}
+          Paid in full
+        {{/if}}
+      </td>
+    </tr>
+  </tbody>
+</table>

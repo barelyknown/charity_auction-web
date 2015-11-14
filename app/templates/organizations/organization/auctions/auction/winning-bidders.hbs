@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <th>
+      Bidder
+    </th>
+    <th>
+      Winnings
+    </th>
+    <th>
+      Balance
+    </th>
+  </thead>
+  <tbody>
+    {{#each model as |bidder|}}
+      <tr>
+        <td>
+          {{#link-to 'organizations.organization.auctions.auction.bidders.bidder' bidder}}
+            {{format-bidder-name bidder=bidder}}
+          {{/link-to}}
+        </td>
+        <td class="money">
+          ${{number-with-delimiter bidder.totalWinningAmount}}
+        </td>
+        <td class="money">
+          {{#if bidder.totalBalance}}
+            ${{number-with-delimiter bidder.totalBalance}}
+          {{else}}
+            ${{bidder.totalBalance}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

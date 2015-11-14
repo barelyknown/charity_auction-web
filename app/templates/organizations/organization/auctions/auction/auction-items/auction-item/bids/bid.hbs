@@ -1,5 +1,11 @@
-<div class="">
-  <b>Bid</b>
-</div>
-{{model.id}} {{model.amount}} {{format-bidder-name bidder=model.bidder}} {{if model.winner 'winner'}}
+<h4>
+  {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.bids.bid'}}
+    Bid
+  {{/link-to}}
+</h4>
+
+{{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item.bids.bid.edit'}}
+  Edit
+{{/link-to}}
+
 {{outlet}}

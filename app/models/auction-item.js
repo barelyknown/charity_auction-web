@@ -20,5 +20,11 @@ export default DS.Model.extend({
       return true;
     }
   }),
-  isValid: Ember.computed.and('isAuctionValid','isDonationValid','isBidTypeValid','isMinimumBidAmountValid')
+  isValid: Ember.computed.and('isAuctionValid','isDonationValid','isBidTypeValid','isMinimumBidAmountValid'),
+
+  winningBids: Ember.computed.filterBy('bids', 'winner', true),
+  winningBidBalances: Ember.computed.mapBy('winningBids', 'balance'),
+  winningBidBalance: Ember.computed.sum('winningBidBalances'),
+  winningBidAmounts: Ember.computed.mapBy('winningBids', 'amount'),
+  winningBidAmount: Ember.computed.sum('winningBidAmounts')
 });

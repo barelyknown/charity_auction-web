@@ -1,7 +1,9 @@
-<table>
+<table class='winning-bids'>
   <thead>
     <tr>
       <th>Auction Item</th>
+      <th>Bid Type</th>
+      <th>Bidder</th>
       <th>Amount</th>
       <th>Balance</th>
     </tr>
@@ -10,15 +12,40 @@
     {{#each winningBids as |bid|}}
       <tr>
         <td>
-          {{bid.auctionItem.donation.title}}
+          {{#link-to 'organizations.organization.auctions.auction.auction-items.auction-item' bid.auctionItem}}
+            {{bid.auctionItem.donation.title}}
+          {{/link-to}}
         </td>
         <td>
-          {{bid.amount}}
+          {{bid.auctionItem.bidType.name}}
         </td>
         <td>
-          {{bid.balance}}
+          {{#link-to 'organizations.organization.auctions.auction.bidders.bidder' bid.bidder}}
+            {{format-bidder-name bidder=bid.bidder}}
+          {{/link-to}}
+        </td>
+        <td class="money">
+          ${{number-with-delimiter bid.amount}}
+        </td>
+        <td class="money">
+          {{#if bid.balance}}
+            ${{number-with-delimiter bid.balance}}
+          {{/if}}
         </td>
       </tr>
     {{/each}}
+    <tr>
+      <td colspan=3></td>
+      <td class="money">
+        ${{number-with-delimiter totalAmount}}
+      </td>
+      <td class="money">
+        {{#if totalBalance}}
+          ${{number-with-delimiter totalBalance}}
+        {{else}}
+          Paid in full
+        {{/if}}
+      </td>
+    </tr>
   </tbody>
 </table>

@@ -51,13 +51,17 @@ Router.map(function() {
 
               this.route('bids', {}, function() {
                 this.route('new', {});
-                this.route('bid', { path: ':bid_id' });
+                this.route('bid', { path: ':bid_id' }, function() {
+                  this.route('edit', {});
+                });
               });
             });
           });
           this.route('payments', {}, function() {
             this.route('new', {});
-            this.route('payment', { path: ':payment_id' }, function() {});
+            this.route('payment', { path: ':payment_id' }, function() {
+              this.route('edit', {});
+            });
           });
 
           this.route('bidders', {}, function() {
@@ -66,6 +70,8 @@ Router.map(function() {
             });
             this.route('new', {});
           });
+          this.route('winning-bids', {});
+          this.route('winning-bidders', {});
         });
       });
 
@@ -86,6 +92,7 @@ Router.map(function() {
   });
   this.route('bidder-checkout', { path: 'bidder-checkout/:bidder_id' });
   this.route('cashier-summary', { path: 'cashier-summary/:bidder_id' });
+  this.route('checkout-printouts', {});
 });
 
 export default Router;

@@ -6,6 +6,7 @@ export default DS.Model.extend({
   number: DS.attr('string'),
   price: DS.attr('number'),
   bidders: DS.hasMany('bidder'),
+  createBidderAutomatically: DS.attr('boolean'),
 
   isAuctionValid: Ember.computed.notEmpty('auction'),
 

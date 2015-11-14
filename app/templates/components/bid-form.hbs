@@ -2,8 +2,8 @@
   <label for="">Bidder</label>
   <select onchange={{action 'setBidder' value='target.value'}} >
     <option value=''>Select bidder</option>
-    {{#each bid.auctionItem.auction.bidders as |bidder|}}
-      <option value={{bidder.id}}>{{format-bidder-name bidder=bidder}}</option>
+    {{#each sortedBidders as |bidder|}}
+      <option value={{bidder.id}} selected={{eq bidder.id bid.bidder.id}}>{{bidder.number}} {{format-bidder-name bidder=bidder}}</option>
     {{/each}}
   </select>
 </div>

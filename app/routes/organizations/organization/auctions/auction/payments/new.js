@@ -14,7 +14,8 @@ export default Ember.Route.extend({
       const auction = this.modelFor('organizations.organization.auctions.auction');
       return this.get('store').createRecord('payment', {
         auction: auction,
-        bidder: bidder
+        bidder: bidder,
+        amount: params.amount
       });
     })
 
